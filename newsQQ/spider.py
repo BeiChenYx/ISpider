@@ -49,8 +49,9 @@ class NewsSpider(object):
         for index in range(0, len(self.news_url)):
             print(self.news_url[index])
             rst = requests.get(self.news_url[index], timeout=30)
-            with open('./DOC/{}.html'.format(index), 'w', encoding='utf-8') as file:
-                file.write(rst.text)
+            # rst.encoding = 'utf-8'
+            with open('./DOC/{}.html'.format(index), 'wb') as file:
+                file.write(rst.content)
 
         # with open('./DOC/first.html', 'w', encoding='utf-8') as file:
         #     file.write(r.text)
