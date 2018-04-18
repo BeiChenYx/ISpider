@@ -7,8 +7,8 @@ class NewsSpider(object):
     """
 
     def __init__(self):
-        # self.aim_url = 'http://news.qq.com/'
-        self.aim_url = 'https://blog.csdn.net/'
+        self.aim_url = 'http://news.qq.com/'
+        # self.aim_url = 'https://blog.csdn.net/'
         # headers = (
         #     "User-Agent",
         #     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0"
@@ -33,6 +33,8 @@ class NewsSpider(object):
         # r.raise_for_status()
         print(r.text)
         print(len(r.text))
+        with open('./DOC/first.html', 'w', encoding='utf-8') as file:
+            file.write(r.text)
 
 
 if __name__ == '__main__':
