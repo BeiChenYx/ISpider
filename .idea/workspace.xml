@@ -2,126 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6eca6cb5-cb22-4330-9daf-3ffc541ed5f8" name="Default" comment="完成了腾讯新闻爬虫，爬取了117个网页">
+      <change afterPath="$PROJECT_DIR$/EmbarrassingThings/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/0.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/100.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/101.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/102.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/103.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/104.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/105.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/106.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/107.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/108.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/109.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/110.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/111.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/112.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/113.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/114.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/115.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/116.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/21.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/22.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/23.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/24.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/25.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/26.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/27.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/28.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/29.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/30.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/31.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/32.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/33.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/34.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/35.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/36.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/37.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/38.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/39.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/40.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/41.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/42.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/43.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/44.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/45.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/46.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/47.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/48.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/49.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/50.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/51.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/52.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/53.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/54.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/55.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/56.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/57.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/58.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/59.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/60.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/61.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/62.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/63.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/64.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/65.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/66.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/67.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/68.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/69.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/70.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/71.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/72.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/73.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/74.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/75.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/76.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/77.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/78.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/79.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/80.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/81.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/82.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/83.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/84.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/85.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/86.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/87.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/88.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/89.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/90.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/91.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/92.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/93.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/94.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/95.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/96.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/97.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/98.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/99.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/DOC/first.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsQQ/spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsQQ/spider.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -135,14 +17,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="spider.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="spider.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newsQQ/spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
+            <state relative-caret-position="144">
+              <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="trial.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/csdnBlog/trial.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="blog.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/csdnBlog/blog.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4145" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/EmbarrassingThings/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="36">
+                <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -162,6 +68,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/newsQQ/spider.py" />
+        <option value="$PROJECT_DIR$/EmbarrassingThings/README.md" />
       </list>
     </option>
   </component>
@@ -196,7 +103,7 @@
             <path>
               <item name="ISpider" type="b2602c69:ProjectViewProjectNode" />
               <item name="ISpider" type="462c0819:PsiDirectoryNode" />
-              <item name="newsQQ" type="462c0819:PsiDirectoryNode" />
+              <item name="EmbarrassingThings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -280,10 +187,10 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.57946557" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32911393" />
+      <window_info anchor="bottom" id="Version Control" visible="true" weight="0.32911393" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="SciView" />
@@ -356,11 +263,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newsQQ/spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
+        <state relative-caret-position="144">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csdnBlog/trial.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csdnBlog/analyze.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csdnBlog/blog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4145" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmbarrassingThings/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="36">
+            <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
