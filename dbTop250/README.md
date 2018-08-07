@@ -21,13 +21,14 @@ pip install pyquery
 
 ### url分析
 
-页码 | URL
----|:--:|---
+页码 |       URL
+---|---
 第一页|https://book.douban.com/top250?start=0
 第二页|https://book.douban.com/top250?start=25
 第三页|  https://book.douban.com/top250?start=50
 ....  |...
 第十页|https://book.douban.com/top250?start=225
+
 
 > 规律：start 参数控制翻页，每页25个数据.
 
