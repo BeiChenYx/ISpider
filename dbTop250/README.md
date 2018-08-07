@@ -43,4 +43,4 @@ price     |//p[@class="pl"]/text()|'p.pl'|'p.pl'
 score     |//span[@class="rating_nums"]/text()|'span.rating_nums'|'span.rating_nums'
 comments  |//span[@class="pl"]/text()|'span.pl'|'span.pl'
 
-> 其中 auth publisher time price在一个块里面，使用了 / 分开；
+> 其中 author publisher time price在一个块里面，使用了 / 分开；
