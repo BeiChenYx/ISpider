@@ -36,7 +36,7 @@ pip install pyquery
 字段      | Xpath                   | BeautifulSoup         | PyQuery
 ----------|:-----------------------:|:----------------------:|--------
 tile      |//div[@class="pl2"]/a/text()|'div.pl2 a'|'div.pl2 a'
-auth      |//p[@class="pl"]/text()|'p.pl'|'p.pl'
+author      |//p[@class="pl"]/text()|'p.pl'|'p.pl'
 publisher |//p[@class="pl"]/text()|'p.pl'|'p.pl'
 time      |//p[@class="pl"]/text()|'p.pl'|'p.pl'
 price     |//p[@class="pl"]/text()|'p.pl'|'p.pl'
