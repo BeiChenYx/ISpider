@@ -29,7 +29,6 @@ pip install pyquery
 ....  |...
 第十页|https://book.douban.com/top250?start=225
 
-
 > 规律：start 参数控制翻页，每页25个数据.
 
 ### 数据解析
@@ -43,3 +42,5 @@ time      |//p[@class="pl"]/text()|'p.pl'|'p.pl'
 price     |//p[@class="pl"]/text()|'p.pl'|'p.pl'
 score     |//span[@class="rating_nums"]/text()|'span.rating_nums'|'span.rating_nums'
 comments  |//span[@class="pl"]/text()|'span.pl'|'span.pl'
+
+> 其中 auth publisher time price在一个块里面，使用了 / 分开；
