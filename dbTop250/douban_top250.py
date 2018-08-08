@@ -3,12 +3,13 @@
 """
 # coding: utf-8
 import json
-import time
 import requests
 from lxml import etree
 
 
-__headers__ = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; …) Gecko/20100101 Firefox/61.0"}
+__headers__ = {
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0"
+}
 __file_path__ = './top250.json'
 
 def get_page(url) -> str:
@@ -17,8 +18,7 @@ def get_page(url) -> str:
     :url 要访问的地址
     :return 返回响应的内容字符串，失败返回空字符串
     """
-    # result = requests.get(url, headers=__headers__)
-    result = requests.get(url)
+    result = requests.get(url, headers=__headers__)
     if result.status_code == 200:
         return result.text
     return ''
@@ -31,39 +31,18 @@ def parse_page(html) -> dict:
     """
     # 使用 Xpath 解析数据
     result = etree.HTML(html)
-    title_rst = result.xpath('//div[@class="pl2"]/a/text()')
-    # auth publisher time price出版信息
-    publish_all_rst = result.xpath('//p[@class="pl"]/text()')
-    score_rst = result.xpath('//span[@class="rating_nums"]/text()')
-    comments_rst = result.xpath('//span[@class="pl"]/text()')
-    len_title = len(title_rst)
-    print('len_title: ', len_title)
-    print('title: ', [title.strip() for title in title_rst])
-    # for index in range(len_title):
-    #     try:
-    #         title = title_rst[index]
-    #         publish_info = publish_all_rst[index].split('/')
-    #         price = publish_info.pop()
-    #         timed = publish_info.pop()
-    #         publisher = publish_info.pop()
-    #         author = '/'.join(publish_info)
-    #         score = score_rst[index]
-    #         comments, = comments_rst[index]
-    #         rst = {
-    #             'title': title,
-    #             'author': author,
-    #             'publisher': publisher,
-    #             'time': timed,
-    #             'price': price,
-    #             'score': score,
-    #             'comments': comments,
-    #         }
-    #         print('index: ', index)
-    #         print('title: ', title)
-    #         yield rst
-    #     except Exception as err:
-    #         print(str(err))
-
+    tds = result.xpath('//table[@width="100%"]/tr/td[2]')
+    for td in tds:
+        publisher = td.xpath('./p[@class="pl"]/text()')[0].split('/')
+        yield {
+            'title': td.xpath('./div[@class="pl2"]/a/@title')[0],
+            'price': publisher.pop(),
+            'time': publisher.pop(),
+            'publisher': publisher.pop(),
+            'author': '/'.join(publisher),
+            'score': td.xpath('./div[@class="star clearfix"]/span[@class="rating_nums"]/text()')[0],
+            'comments': td.xpath('./div[@class="star clearfix"]/span[@class="pl"]/text()')[0],
+        }
 
 def save_data(data) -> bool:
     """
@@ -71,7 +50,6 @@ def save_data(data) -> bool:
     :data 要保存的数据
     :return True / False
     """
-    # print('data: ', data)
     try:
         with open(__file_path__, 'w', encoding='utf-8') as handler:
             json.dump(data, handler, ensure_ascii=False, indent=4)
@@ -93,11 +71,12 @@ def main():
         html = get_page(url)
         if html:
             result = parse_page(html)
+            for rst in result:
+                result_info.append(rst)
             success_url.append(url)
-            result_info.append(result)
+            print('result_info len: ', len(result_info))
         else:
             failed_url.append(url)
-        time.sleep(1)
     save_data(result_info)
     print('sucess process page: ', len(success_url))
     print('failed process page: ', len(failed_url))

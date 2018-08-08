@@ -33,14 +33,10 @@ pip install pyquery
 
 ### 数据解析
 
-字段      | Xpath                   | BeautifulSoup         | PyQuery
-----------|:-----------------------:|:----------------------:|--------
-tile      |//div[@class="pl2"]/a/text()|'div.pl2 a'|'div.pl2 a'
-author      |//p[@class="pl"]/text()|'p.pl'|'p.pl'
-publisher |//p[@class="pl"]/text()|'p.pl'|'p.pl'
-time      |//p[@class="pl"]/text()|'p.pl'|'p.pl'
-price     |//p[@class="pl"]/text()|'p.pl'|'p.pl'
-score     |//span[@class="rating_nums"]/text()|'span.rating_nums'|'span.rating_nums'
-comments  |//span[@class="pl"]/text()|'span.pl'|'span.pl'
+```text
+榜单信息都分布在在 <table with="100%"> 中，每页有25个；
+每个table 中有一个 tr, tr下面两个td, 第二个td为所要的数据位置
+xpath:
+ tds: '//table[@width="100%"]/tr/td[2]'
 
-> 其中 author publisher time price在一个块里面，使用了 / 分开；
+```
