@@ -30,19 +30,19 @@ def parse_page(html) -> dict:
     :return 返回一个字典
     """
     # 使用 Xpath 解析数据
-    result = etree.HTML(html)
-    tds = result.xpath('//table[@width="100%"]/tr/td[2]')
-    for td in tds:
-        publisher = td.xpath('./p[@class="pl"]/text()')[0].split('/')
-        yield {
-            'title': td.xpath('./div[@class="pl2"]/a/@title')[0],
-            'price': publisher.pop(),
-            'time': publisher.pop(),
-            'publisher': publisher.pop(),
-            'author': '/'.join(publisher),
-            'score': td.xpath('./div[@class="star clearfix"]/span[@class="rating_nums"]/text()')[0],
-            'comments': td.xpath('./div[@class="star clearfix"]/span[@class="pl"]/text()')[0],
-        }
+    # result = etree.HTML(html)
+    # tds = result.xpath('//table[@width="100%"]/tr/td[2]')
+    # for td in tds:
+    #     publisher = td.xpath('./p[@class="pl"]/text()')[0].split('/')
+    #     yield {
+    #         'title': td.xpath('./div[@class="pl2"]/a/@title')[0],
+    #         'price': publisher.pop(),
+    #         'time': publisher.pop(),
+    #         'publisher': publisher.pop(),
+    #         'author': '/'.join(publisher),
+    #         'score': td.xpath('./div[@class="star clearfix"]/span[@class="rating_nums"]/text()')[0],
+    #         'comments': td.xpath('./div[@class="star clearfix"]/span[@class="pl"]/text()')[0],
+    #     }
 
 def save_data(data) -> bool:
     """
