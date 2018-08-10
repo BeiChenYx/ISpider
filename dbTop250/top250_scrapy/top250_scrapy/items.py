@@ -9,6 +9,14 @@ import scrapy
 
 
 class Top250ScrapyItem(scrapy.Item):
+    """
+    Top250需要的数据
+    """
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    price = scrapy.Field()
+    time = scrapy.Field()
+    publisher = scrapy.Field()
+    author = scrapy.Field()
+    score = scrapy.Field()
+    comments = scrapy.Field()
