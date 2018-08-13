@@ -71,8 +71,8 @@ ITEM_PIPELINES = {
 }
 MYSQL_HOST = '120.79.7.88'
 MYSQL_DATABASE = 'site_spider'
-MYSQL_USER = 'BeiChen'
-MYSQL_PASS = '!XING554yx@'
+MYSQL_USER = ''
+MYSQL_PASS = ''
 MYSQL_PORT = 3306
 
 # Enable and configure the AutoThrottle extension (disabled by default)
