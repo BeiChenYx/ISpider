@@ -78,6 +78,9 @@ class Top250ScrapyDownloaderMiddleware(object):
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
+        request.headers['user-agent'] = ('Mozilla/5.0 (Windows '
+                                         'NT 10.0; Win64; x64; rv'
+                                         ':61.0) Gecko/20100101 Firefox/61.0')
         return None
 
     def process_response(self, request, response, spider):
@@ -87,6 +90,7 @@ class Top250ScrapyDownloaderMiddleware(object):
         # - return a Response object
         # - return a Request object
         # - or raise IgnoreRequest
+
         return response
 
     def process_exception(self, request, exception, spider):

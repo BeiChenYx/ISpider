@@ -16,10 +16,11 @@ NEWSPIDER_MODULE = 'top250_scrapy.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'top250_scrapy (+http://www.yourdomain.com)'
+
+# USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -52,9 +53,9 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'top250_scrapy.middlewares.Top250ScrapyDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'top250_scrapy.middlewares.Top250ScrapyDownloaderMiddleware': 543,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -64,9 +65,15 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'top250_scrapy.pipelines.Top250ScrapyPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'top250_scrapy.pipelines.DuplicatesTop250Pipeline': 299,
+    'top250_scrapy.pipelines.MysqlTop250ScrapyPipeline': 300,
+}
+MYSQL_HOST = '120.79.7.88'
+MYSQL_DATABASE = 'site_spider'
+MYSQL_USER = 'BeiChen'
+MYSQL_PASS = '!XING554yx@'
+MYSQL_PORT = 3306
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
