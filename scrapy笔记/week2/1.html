@@ -1,0 +1,702 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>1. Scrapy与Urllib整合实现京东商品 | Introduction</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../week2/2.html" />
+    
+    
+    <link rel="prev" href="../week2/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="12.1"
+        data-chapter-title="1. Scrapy与Urllib整合实现京东商品"
+        data-filepath="week2/1.md"
+        data-basepath=".."
+        data-revision="Sun Jan 28 2018 19:48:10 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Scrapy简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="scrapy/index.html">
+            
+                
+                    <a href="../scrapy/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        1. 认识Scrapy框架
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="scrapy/2.html">
+            
+                
+                    <a href="../scrapy/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        2. Scrapy安装和使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="scrapy/3.html">
+            
+                
+                    <a href="../scrapy/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        3. Scrapy常用命令实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="scrapy/4.html">
+            
+                
+                    <a href="../scrapy/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        4. Scrapy实现当当网商品爬虫实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="scrapy/5.html">
+            
+                
+                    <a href="../scrapy/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        5. Scrapy模拟登录实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="scrapy/6.html">
+            
+                
+                    <a href="../scrapy/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        6. Scrapy新闻爬虫项目实战上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="scrapy/7.html">
+            
+                
+                    <a href="../scrapy/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        7. Scrapy新闻爬虫项目实战下
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="scrapy/8.html">
+            
+                
+                    <a href="../scrapy/8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        8. Scrapy豆瓣网登录爬虫与验证码识别项目实战1
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="scrapy/9.html">
+            
+                
+                    <a href="../scrapy/9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        9. Scrapy豆瓣网登录爬虫与验证码识别项目实战2
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="scrapy/10.html">
+            
+                
+                    <a href="../scrapy/10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        10. 如何在Urillib中使用Xpath表达式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="week2/index.html">
+            
+                
+                    <a href="../week2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        Scrapy第二周实战
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="12.1" data-path="week2/1.html">
+            
+                
+                    <a href="../week2/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        1. Scrapy与Urllib整合实现京东商品
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="week2/2.html">
+            
+                
+                    <a href="../week2/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        2. 淘宝商品爬虫项目实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="week2/3.html">
+            
+                
+                    <a href="../week2/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        3. BeautifulSoup基础实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="week2/4.html">
+            
+                
+                    <a href="../week2/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        4. PhantomJS基础实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="week2/5.html">
+            
+                
+                    <a href="../week2/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        5. 腾讯动漫项目爬虫实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="week2/6.html">
+            
+                
+                    <a href="../week2/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        6. Docker基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.7" data-path="week2/7.html">
+            
+                
+                    <a href="../week2/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.7.</b>
+                        
+                        7. Redis的使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.8" data-path="week2/8.html">
+            
+                
+                    <a href="../week2/8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.8.</b>
+                        
+                        8. 分布式爬虫的实战
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Introduction</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="2-scrapy&#x4E0E;urllib&#x6574;&#x5408;&#x5B9E;&#x6218;&#xFF1A;&#x4EAC;&#x4E1C;&#x4E66;&#x57CE;">2. Scrapy&#x4E0E;Urllib&#x6574;&#x5408;&#x5B9E;&#x6218;&#xFF1A;&#x4EAC;&#x4E1C;&#x4E66;&#x57CE;</h1>
+<h4 id="1-&#x521B;&#x5EFA;scrapy&#x7684;&#x9879;&#x76EE;&#x548C;&#x722C;&#x866B;&#x6587;&#x4EF6;">1. &#x521B;&#x5EFA;Scrapy&#x7684;&#x9879;&#x76EE;&#x548C;&#x722C;&#x866B;&#x6587;&#x4EF6;</h4>
+<pre><code>   $ scrapy startproject jdgoods
+        New Scrapy project &apos;jdgoods&apos;, using template directory &apos;...&apos;, created in:
+        C:\Users\Administrator\Desktop\code\jdgoods
+
+        You can start your first spider with:
+            cd jdgoods
+            scrapy genspider example example.com
+
+   $ cd jdgoods
+
+   $ scrapy genspider -t basic good jd.com
+        Created spider &apos;good&apos; using template &apos;basic&apos; in module:
+        jdgoods.spiders.good
+</code></pre><h4 id="2-&#x7F16;&#x5199;items&#x6587;&#x4EF6;">2. &#x7F16;&#x5199;items&#x6587;&#x4EF6;</h4>
+<pre><code class="lang-python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+
+<span class="hljs-comment"># Define here the models for your scraped items</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># See documentation in:</span>
+<span class="hljs-comment"># https://doc.scrapy.org/en/latest/topics/items.html</span>
+
+<span class="hljs-keyword">import</span> scrapy
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JdgoodsItem</span><span class="hljs-params">(scrapy.Item)</span>:</span>
+    <span class="hljs-comment"># define the fields for your item here like:</span>
+    <span class="hljs-comment"># name = scrapy.Field()</span>
+    <span class="hljs-comment">#&#x56FE;&#x4E66;&#x53F7;</span>
+    pdnum = scrapy.Field()
+    <span class="hljs-comment">#&#x9891;&#x9053;1</span>
+    pd1 = scrapy.Field()
+    <span class="hljs-comment">#&#x9891;&#x9053;2</span>
+    pd2 = scrapy.Field()
+    <span class="hljs-comment">#&#x56FE;&#x4E66;&#x540D;(</span>
+    name = scrapy.Field()
+    <span class="hljs-comment">#&#x4EF7;&#x683C;</span>
+    price = scrapy.Field()
+    <span class="hljs-comment">#&#x8BC4;&#x4EF7;&#x6570;</span>
+    pnum = scrapy.Field()
+    <span class="hljs-comment">#&#x4F5C;&#x8005;</span>
+    author = scrapy.Field()
+    <span class="hljs-comment">#&#x51FA;&#x7248;&#x793E;</span>
+    pub = scrapy.Field()
+    <span class="hljs-comment">#&#x5E97;&#x5BB6;</span>
+    seller = scrapy.Field()
+</code></pre>
+<h4 id="3-&#x7F16;&#x8F91;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;settingspy">3. &#x7F16;&#x8F91;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;settings.py</h4>
+<pre><code class="lang-python">...
+<span class="hljs-comment">#&#x8BBE;&#x7F6E;&#x5FFD;&#x7565;robots</span>
+<span class="hljs-comment"># Obey robots.txt rules</span>
+ROBOTSTXT_OBEY = <span class="hljs-keyword">False</span>
+...
+
+<span class="hljs-comment">#&#x5F00;&#x542F;item Pipeline&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;</span>
+<span class="hljs-comment"># Configure item pipelines</span>
+ITEM_PIPELINES = {
+    <span class="hljs-string">&apos;jdgoods.pipelines.JdgoodsPipeline&apos;</span>: <span class="hljs-number">300</span>,
+}
+...
+</code></pre>
+<h4 id="4-&#x7F16;&#x5199;goodspy&#x722C;&#x866B;&#x6587;&#x4EF6;&#xFF08;&#x7B2C;&#x4E00;&#x6B65;&#x5148;&#x722C;&#x53D6;&#x9891;&#x9053;1&#x7684;&#x6240;&#x6709;&#x53F7;&#x4FE1;&#x606F;&#xFF09;">4. &#x7F16;&#x5199;goods.py&#x722C;&#x866B;&#x6587;&#x4EF6;&#xFF08;&#x7B2C;&#x4E00;&#x6B65;&#x5148;&#x722C;&#x53D6;&#x9891;&#x9053;1&#x7684;&#x6240;&#x6709;&#x53F7;&#x4FE1;&#x606F;&#xFF09;</h4>
+<pre><code># -*- coding: utf-8 -*-
+import scrapy
+import urllib.request
+import re
+import random
+from jdgoods.items import JdgoodsItem
+from lxml import etree
+from scrapy.http import Request
+
+
+class GoodSpider(scrapy.Spider):
+    name = &apos;good&apos;
+    allowed_domains = [&apos;jd.com&apos;]
+    #start_urls = [&apos;http://jd.com/&apos;]
+    #&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6267;&#x884C;&#x7684;&#x65B9;&#x6CD5;
+    def start_requests(self):
+        #&#x6D4F;&#x89C8;&#x5668;&#x4F2A;&#x88C5;&#x722C;&#x53D6;&#x4EAC;&#x4E1C;&#x56FE;&#x4E66;&#x9996;&#x9875;
+        ua=[&quot;Opera/9.80(Macintosh;IntelMacOSX10.6.8;U;en)Presto/2.8.131Version/11.11&quot;,
+            &quot;Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;TencentTraveler4.0)&quot;,
+            &quot;Opera/9.80(WindowsNT6.1;U;en)Presto/2.8.131Version/11.11&quot;]
+        req1=urllib.request.Request(&quot;https://book.jd.com&quot;)
+        req1.add_header(&quot;User-Agent&quot;,random.choice(ua))
+        allpddata=urllib.request.urlopen(req1).read().decode(&quot;GBK&quot;,&quot;ignore&quot;)
+        #print(allpddata)
+
+        #&#x901A;&#x8FC7;&#x6B63;&#x5219;&#x5339;&#x914D;&#x51FA;&#x4EAC;&#x4E1C;&#x56FE;&#x4E66;&#x7684;&#x6240;&#x6709;&#x9891;&#x9053;1&#x7684;&#x53F7;&#x4FE1;&#x606F;
+        pat1=r&apos;{&quot;NAME&quot;:&quot;[^\&quot;]*?&quot;,&quot;URL&quot;:&quot;\\\/\\\/channel.jd.com\\\/([0-9\-]*?).html&quot;&apos;
+        allpd=re.compile(pat1).findall(allpddata)
+        print(allpd) #&#x8F93;&#x51FA;&#x9996;&#x9875;&#x4E2D;&#x7684;&#x680F;&#x76EE;id&#x53F7;
+
+        return []
+    def parse(self, response):
+        pass
+</code></pre><ul>
+<li>&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;</li>
+</ul>
+<pre><code>C:\Users\Administrator\Desktop\code\jdgoods&gt;scrapy crawl good --nolog
+[&apos;1713-3258&apos;, &apos;1713-3259&apos;, &apos;1713-3261&apos;, &apos;1713-3289&apos;, &apos;1713-3291&apos;, &apos;1713-3290&apos;, &apos;
+1713-11047&apos;, &apos;1713-3294&apos;, &apos;1713-3273&apos;, &apos;1713-3279&apos;, &apos;1713-3276&apos;, &apos;1713-3281&apos;, &apos;1
+713-3277&apos;, &apos;1713-3266&apos;, &apos;1713-3264&apos;, &apos;1713-3265&apos;, &apos;1713-3267&apos;, &apos;1713-3270&apos;, &apos;171
+3-3271&apos;, &apos;1713-3262&apos;, &apos;1713-3282&apos;, &apos;1713-3284&apos;, &apos;1713-3285&apos;, &apos;1713-3287&apos;, &apos;1713-
+4855&apos;, &apos;1713-6929&apos;, &apos;1713-14669&apos;, &apos;1713-4758&apos;, &apos;1713-11745&apos;, &apos;1713-3260&apos;, &apos;1713-
+3272&apos;, &apos;1713-12776&apos;, &apos;1713-3262&apos;, &apos;1713-3287&apos;, &apos;1713-3266&apos;, &apos;1713-3264&apos;, &apos;1713-3
+265&apos;, &apos;1713-3289&apos;, &apos;1713-3290&apos;, &apos;1713-3291&apos;, &apos;1713-3287&apos;, &apos;1713-3285&apos;, &apos;1713-328
+4&apos;, &apos;1713-12776&apos;, &apos;1713-3267&apos;, &apos;1713-3267&apos;, &apos;1713-4855&apos;, &apos;1713-6929&apos;, &apos;1713-3267
+&apos;, &apos;1713-3267&apos;]
+</code></pre><h4 id="&#x3000;5-&#x7F16;&#x8F91;goodspy&#x722C;&#x866B;&#x6587;&#x4EF6;&#xFF08;&#x7B2C;&#x4E8C;&#x6B65;&#x722C;&#x53D6;&#x6BCF;&#x4E2A;&#x680F;&#x76EE;&#x4FE1;&#x606F;&#x4E2D;&#x5217;&#x8868;&#x53F7;&#xFF09;">&#x3000;5. &#x7F16;&#x8F91;goods.py&#x722C;&#x866B;&#x6587;&#x4EF6;&#xFF08;&#x7B2C;&#x4E8C;&#x6B65;&#x722C;&#x53D6;&#x6BCF;&#x4E2A;&#x680F;&#x76EE;&#x4FE1;&#x606F;&#x4E2D;&#x5217;&#x8868;&#x53F7;&#xFF09;</h4>
+<pre><code class="lang-python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> scrapy
+<span class="hljs-keyword">import</span> urllib.request
+<span class="hljs-keyword">import</span> re
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">from</span> jdgoods.items <span class="hljs-keyword">import</span> JdgoodsItem
+<span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree
+<span class="hljs-keyword">from</span> scrapy.http <span class="hljs-keyword">import</span> Request
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GoodSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span>
+    name = <span class="hljs-string">&apos;good&apos;</span>
+    allowed_domains = [<span class="hljs-string">&apos;jd.com&apos;</span>]
+    <span class="hljs-comment">#start_urls = [&apos;http://jd.com/&apos;]</span>
+    <span class="hljs-comment">#&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6267;&#x884C;&#x7684;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start_requests</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment">#&#x6D4F;&#x89C8;&#x5668;&#x4F2A;&#x88C5;&#x722C;&#x53D6;&#x4EAC;&#x4E1C;&#x56FE;&#x4E66;&#x9996;&#x9875;</span>
+        ua=[<span class="hljs-string">&quot;Opera/9.80(Macintosh;IntelMacOSX10.6.8;U;en)Presto/2.8.131Version/11.11&quot;</span>,
+            <span class="hljs-string">&quot;Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;TencentTraveler4.0)&quot;</span>,
+            <span class="hljs-string">&quot;Opera/9.80(WindowsNT6.1;U;en)Presto/2.8.131Version/11.11&quot;</span>]
+        req1=urllib.request.Request(<span class="hljs-string">&quot;https://book.jd.com&quot;</span>)
+        req1.add_header(<span class="hljs-string">&quot;User-Agent&quot;</span>,random.choice(ua))
+        allpddata=urllib.request.urlopen(req1).read().decode(<span class="hljs-string">&quot;GBK&quot;</span>,<span class="hljs-string">&quot;ignore&quot;</span>)
+        <span class="hljs-comment">#print(allpddata)</span>
+
+        <span class="hljs-comment">#&#x901A;&#x8FC7;&#x6B63;&#x5219;&#x5339;&#x914D;&#x51FA;&#x4EAC;&#x4E1C;&#x56FE;&#x4E66;&#x7684;&#x6240;&#x6709;&#x9891;&#x9053;1&#x7684;&#x53F7;&#x4FE1;&#x606F;</span>
+        pat1=<span class="hljs-string">r&apos;{&quot;NAME&quot;:&quot;[^\&quot;]*?&quot;,&quot;URL&quot;:&quot;\\\/\\\/channel.jd.com\\\/([0-9\-]*?).html&quot;&apos;</span>
+        allpd=re.compile(pat1).findall(allpddata)
+        <span class="hljs-comment">#print(allpd)</span>
+        allpd=[<span class="hljs-string">&apos;1713-3261&apos;</span>,<span class="hljs-string">&apos;1713-3258&apos;</span>]
+
+        <span class="hljs-comment">#&#x904D;&#x5386;&#x9891;&#x9053;1&#xFF0C;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x9891;&#x9053;2&#x7684;&#x53F7;&#x4FE1;&#x606F;</span>
+        catall=[]    
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> allpd:
+            thispd=<span class="hljs-string">&quot;http://channel.jd.com/&quot;</span>+i+<span class="hljs-string">&quot;.html&quot;</span>
+            req2 = urllib.request.Request(thispd)
+            req2.add_header(<span class="hljs-string">&quot;User-Agent&quot;</span>,random.choice(ua))
+            pddata=urllib.request.urlopen(req2).read().decode(<span class="hljs-string">&quot;utf-8&quot;</span>,<span class="hljs-string">&quot;ignore&quot;</span>)
+            pat2=<span class="hljs-string">&apos;href=&quot;//list\.jd\.com/list\.html\?cat=([0-9,]*?)[&quot;&amp;]&apos;</span>
+            allnum=re.compile(pat2).findall(pddata)
+            <span class="hljs-comment">#print(allnum)</span>
+            <span class="hljs-comment">#print(&quot;=&quot;*30)</span>
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> allnum:
+                catall.append(j)
+        <span class="hljs-comment">#print(len(catall))</span>
+        catall2 = set(catall) <span class="hljs-comment">#&#x53BB;&#x91CD;</span>
+        <span class="hljs-comment">#&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x9891;&#x9053;2&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x9875;&#x6570;</span>
+        allurl={} <span class="hljs-comment">#[{&quot;cat&quot;:&quot;pagenum&quot;}]</span>
+        <span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> catall2:
+            thisphnum=m
+            req3 = urllib.request.Request(<span class="hljs-string">&quot;https://list.jd.com/list.html?cat=&quot;</span>+thisphnum)
+            req3.add_header(<span class="hljs-string">&quot;User-Agent&quot;</span>,random.choice(ua))
+            listdata=urllib.request.urlopen(req3).read().decode(<span class="hljs-string">&quot;utf-8&quot;</span>,<span class="hljs-string">&quot;ignore&quot;</span>)
+            pat3=<span class="hljs-string">&apos;&lt;em&gt;&#x5171;&lt;b&gt;([0-9]*?)&lt;/b&gt;&#x9875;&apos;</span>
+            allpage=re.compile(pat3).findall(listdata)
+            <span class="hljs-keyword">if</span> len(allpage)==<span class="hljs-number">0</span>:
+                allpage=[<span class="hljs-number">1</span>]
+            allurl[thisphnum]=allpage[<span class="hljs-number">0</span>]
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-comment">#print(allurl)</span>
+
+        <span class="hljs-comment">#&#x904D;&#x5386;&#x6240;&#x6709;&#x9891;&#x9053;2&#x7684;&#x53F7;&#xFF0C;&#x518D;&#x904D;&#x5386;&#x6BCF;&#x4E2A;&#x9891;&#x9053;&#x7684;&#x9875;&#x53F7;</span>
+        <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> catall2:
+            thispage = allurl[n]
+            <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,int(thispage)+<span class="hljs-number">1</span>):
+                thispageurl=<span class="hljs-string">&quot;https://list.jd.com/list.html?cat=&quot;</span>+n+<span class="hljs-string">&quot;&amp;page=&quot;</span>+str(p)
+                <span class="hljs-comment">#print(thispageurl)</span>
+                <span class="hljs-keyword">yield</span> Request(thispageurl,callback=self.parse)
+        <span class="hljs-comment">#return []</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span>
+        item = JdgoodsItem()
+        <span class="hljs-comment">#&#x83B7;&#x53D6;&#x9891;&#x9053;1&#x548C;2</span>
+        pd=response.xpath(<span class="hljs-string">&quot;//span[@class=&apos;curr&apos;]/text()&quot;</span>).extract()
+        <span class="hljs-keyword">if</span>(len(pd)==<span class="hljs-number">0</span>):
+            pd=[<span class="hljs-string">&apos;&#x7F3A;&#x7701;&apos;</span>,<span class="hljs-string">&apos;&#x7F3A;&#x7701;&apos;</span>]
+        <span class="hljs-keyword">if</span>(len(pd)==<span class="hljs-number">1</span>):
+            pda=pd[<span class="hljs-number">0</span>]
+            pd=[pda,<span class="hljs-string">&quot;&#x7F3A;&#x7701;&quot;</span>]
+        <span class="hljs-comment">#print(pd)</span>
+        pd1 = pd[<span class="hljs-number">0</span>]
+        pd2 = pd[<span class="hljs-number">1</span>]
+        <span class="hljs-comment">#&#x83B7;&#x53D6;&#x56FE;&#x4E66;&#x540D;</span>
+        bookname=response.xpath(<span class="hljs-string">&quot;//div[@class=&apos;p-name&apos;]/a/em/text()&quot;</span>).extract()
+        <span class="hljs-comment">#&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x9875;&#x4E2D;&#x6240;&#x6709;&#x56FE;&#x4E66;id&#x53F7;</span>
+        allsku=response.xpath(<span class="hljs-string">&quot;//li[@class=&apos;gl-item&apos;]/div/div[@class=&apos;p-operate&apos;]/a/@data-sku&quot;</span>).extract()
+        <span class="hljs-comment">#print(len(allsku))</span>
+        <span class="hljs-comment">#&#x4EF7;&#x683C;&#xFF1A;https://p.3.cn/prices/mgets?callback=jQuery5975516&amp;type=1&amp;skuIds=J_&#x56FE;&#x4E66;id&#x53F7;</span>
+        <span class="hljs-comment">#&#x8BC4;&#x8BBA;&#x6570;&#xFF1A;https://club.jd.com/comment/productCommentSummaries.action?my=pinglun&amp;callback=jQuery599131&amp;referenceIds=&#x56FE;&#x4E66;id&#x53F7;</span>
+        <span class="hljs-comment">#&#x4F5C;&#x8005;</span>
+        author=response.xpath(<span class="hljs-string">&quot;//span[@class=&apos;author_type_1&apos;]/a/@title&quot;</span>).extract()
+        <span class="hljs-comment">#&#x51FA;&#x7248;&#x793E;</span>
+        pub=response.xpath(<span class="hljs-string">&quot;//span[@class=&apos;p-bi-store&apos;]/a/@title&quot;</span>).extract()
+        <span class="hljs-comment">#&#x5E97;&#x5BB6;</span>
+        seller=response.xpath(<span class="hljs-string">&quot;//span[@class=&apos;curr-shop&apos;]/text()&quot;</span>).extract()
+        <span class="hljs-comment">#&#x904D;&#x5386;&#x5F53;&#x524D;&#x9875;&#x6570;&#x636E;</span>
+        <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>,len(seller)):
+            name=bookname[n+<span class="hljs-number">3</span>]
+            thissku=allsku[n]
+            priceurl=<span class="hljs-string">&quot;https://p.3.cn/prices/mgets?callback=jQuery5975516&amp;type=1&amp;skuIds=J_&quot;</span>+thissku
+            pricedata = urllib.request.urlopen(priceurl).read().decode(<span class="hljs-string">&quot;utf-8&quot;</span>,<span class="hljs-string">&quot;ignore&quot;</span>)
+            pricepat=<span class="hljs-string">&apos;&quot;p&quot;:&quot;(.*?)&quot;&apos;</span>
+            price=re.compile(pricepat).findall(pricedata)[<span class="hljs-number">0</span>]
+
+            pnumeurl=<span class="hljs-string">&quot;https://club.jd.com/comment/productCommentSummaries.action?my=pinglun&amp;callback=jQuery599131&amp;referenceIds=&quot;</span>+thissku
+            pnumdata = urllib.request.urlopen(pnumeurl).read().decode(<span class="hljs-string">&quot;utf-8&quot;</span>,<span class="hljs-string">&quot;ignore&quot;</span>)
+            pnumpat=<span class="hljs-string">&apos;&quot;CommentCount&quot;:(.*?)&apos;</span>
+            pnum=re.compile(pnumpat).findall(pnumdata)[<span class="hljs-number">0</span>]
+            thisauthor=author[n]
+            thispub=pub[n]
+            thisseller=seller[n]
+            <span class="hljs-comment">#print(thissku,name,price,pnum,thisauthor,thispub,thisseller)</span>
+            item[<span class="hljs-string">&apos;pdnum&apos;</span>]=thissku
+            item[<span class="hljs-string">&apos;pd1&apos;</span>]=pd1
+            item[<span class="hljs-string">&apos;pd2&apos;</span>]=pd2
+            item[<span class="hljs-string">&apos;name&apos;</span>]=name
+            item[<span class="hljs-string">&apos;price&apos;</span>]=price
+            item[<span class="hljs-string">&apos;pnum&apos;</span>]=pnum
+            item[<span class="hljs-string">&apos;author&apos;</span>]=thisauthor
+            item[<span class="hljs-string">&apos;pub&apos;</span>]=thispub
+            item[<span class="hljs-string">&apos;seller&apos;</span>]=thisseller
+            <span class="hljs-keyword">yield</span> item
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../week2/index.html" class="navigation navigation-prev " aria-label="Previous page: Scrapy第二周实战"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../week2/2.html" class="navigation navigation-next " aria-label="Next page: 2. 淘宝商品爬虫项目实战"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

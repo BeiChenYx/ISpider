@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>7. Redis的使用 | Introduction</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../week2/8.html" />
+    
+    
+    <link rel="prev" href="../week2/6.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="12.7"
+        data-chapter-title="7. Redis的使用"
+        data-filepath="week2/7.md"
+        data-basepath=".."
+        data-revision="Sun Jan 28 2018 19:48:10 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Scrapy简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="scrapy/index.html">
+            
+                
+                    <a href="../scrapy/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        1. 认识Scrapy框架
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="scrapy/2.html">
+            
+                
+                    <a href="../scrapy/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        2. Scrapy安装和使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="scrapy/3.html">
+            
+                
+                    <a href="../scrapy/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        3. Scrapy常用命令实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="scrapy/4.html">
+            
+                
+                    <a href="../scrapy/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        4. Scrapy实现当当网商品爬虫实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="scrapy/5.html">
+            
+                
+                    <a href="../scrapy/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        5. Scrapy模拟登录实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="scrapy/6.html">
+            
+                
+                    <a href="../scrapy/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        6. Scrapy新闻爬虫项目实战上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="scrapy/7.html">
+            
+                
+                    <a href="../scrapy/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        7. Scrapy新闻爬虫项目实战下
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="scrapy/8.html">
+            
+                
+                    <a href="../scrapy/8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        8. Scrapy豆瓣网登录爬虫与验证码识别项目实战1
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="scrapy/9.html">
+            
+                
+                    <a href="../scrapy/9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        9. Scrapy豆瓣网登录爬虫与验证码识别项目实战2
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="scrapy/10.html">
+            
+                
+                    <a href="../scrapy/10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        10. 如何在Urillib中使用Xpath表达式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="week2/index.html">
+            
+                
+                    <a href="../week2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        Scrapy第二周实战
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="week2/1.html">
+            
+                
+                    <a href="../week2/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        1. Scrapy与Urllib整合实现京东商品
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="week2/2.html">
+            
+                
+                    <a href="../week2/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        2. 淘宝商品爬虫项目实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="week2/3.html">
+            
+                
+                    <a href="../week2/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        3. BeautifulSoup基础实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="week2/4.html">
+            
+                
+                    <a href="../week2/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        4. PhantomJS基础实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="week2/5.html">
+            
+                
+                    <a href="../week2/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        5. 腾讯动漫项目爬虫实战
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="week2/6.html">
+            
+                
+                    <a href="../week2/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        6. Docker基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="12.7" data-path="week2/7.html">
+            
+                
+                    <a href="../week2/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.7.</b>
+                        
+                        7. Redis的使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.8" data-path="week2/8.html">
+            
+                
+                    <a href="../week2/8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.8.</b>
+                        
+                        8. 分布式爬虫的实战
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Introduction</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="6-redis&#x7684;&#x4F7F;&#x7528;">6. Redis&#x7684;&#x4F7F;&#x7528;</h1>
+<h4 id="&#x3000;&#x5B89;&#x88C5;&#xFF1A;">&#x3000;&#x5B89;&#x88C5;&#xFF1A;</h4>
+<pre><code>    $ sudo apt-get update
+
+    $ sudo apt-get install redis-server
+
+    $ /etc/init.d/redis-server restart
+
+    $ redis-cli
+</code></pre><h4 id="&#x4F7F;&#x7528;">&#x4F7F;&#x7528;</h4>
+<pre><code>Redis&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;
+=================================
+1. &#x5171;&#x8BA1;5&#x79CD;&#x7C7B;&#x578B;&#xFF1A;string(&#x5B57;&#x7B26;&#x4E32;)&#x3001;hash(&#x54C8;&#x5E0C;&#x8868;) list(&#x53CC;&#x5411;&#x94FE;&#x8868;)&#x3001;set(&#x96C6;&#x5408;)&#x548C;zset(&#x6709;&#x5E8F;&#x96C6;&#x5408;)
+2. String&#xFF08;&#x5B50;&#x4E32;&#x7C7B;&#x578B;&#xFF09;
+--------------------------------------------
+   set&#x547D;&#x4EE4;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x952E;&#x548C;&#x503C;&#xFF0C;&#x952E;&#x5B58;&#x5728;&#x5219;&#x53EA;&#x8986;&#x76D6;&#xFF0C;&#x8FD4;&#x56DE;ok
+   &gt; set &#x952E;  &#x503C;    &#x4F8B;&#x5982;&#xFF1A; &gt;set name zhangsan
+
+   get&#x547D;&#x4EE4;&#xFF1A;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x952E;&#x7684;&#x503C;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;
+   &gt; get &#x952E;        &#x4F8B;&#x5982;&#xFF1A;&gt;get name
+
+   setnx&#x547D;&#x4EE4;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x952E;&#x548C;&#x503C;&#xFF08;&#x9632;&#x6B62;&#x8986;&#x76D6;&#xFF09;&#xFF0C;
+   &gt; setnx &#x952E; &#x503C;      &#x82E5;&#x952E;&#x5DF2;&#x5B58;&#x5728;&#x5219;&#x8FD4;&#x56DE;0&#x8868;&#x793A;&#x5931;&#x8D25;
+
+   setex&#x547D;&#x4EE4;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x6709;&#x6548;&#x671F;&#x7684;&#x952E;&#x548C;&#x503C;&#xFF08;&#x5355;&#x4F4D;&#x79D2;&#xFF09;
+   &gt; setex &#x952E; [&#x6709;&#x6548;&#x65F6;&#x95F4;] &#x503C;  &#x4F8B;&#x5982;: &gt;setex color 10 red 
+    &#x4E0D;&#x5199;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x5219;&#x8868;&#x793A;&#x6C38;&#x4E45;&#x6709;&#x6548;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;set
+
+   setrange&#x547D;&#x4EE4;&#xFF1A;&#x66FF;&#x6362;&#x5B50;&#x5B57;&#x7B26;&#x4E32; (&#x66FF;&#x6362;&#x957F;&#x5EA6;&#x7531;&#x5B50;&#x5B50;&#x4E32;&#x957F;&#x5EA6;&#x51B3;&#x5B9A;)
+   &gt; setrange &#x952E; &#x4F4D;&#x7F6E; &#x5B50;&#x5B57;&#x4E32;  
+   &gt; setrange name 4 aa  &#x5C06;name&#x952E;&#x5BF9;&#x5E94;&#x503C;&#x7684;&#x7B2C;4&#x4E2A;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#x66FF;&#x6362;
+
+   mset&#x547D;&#x4EE4;&#xFF1A;&#x6279;&#x91CF;&#x8BBE;&#x7F6E;&#x952E;&#x548C;&#x503C;,&#x6210;&#x529F;&#x5219;&#x8FD4;&#x56DE;ok
+   &gt; mset &#x952E;1 &#x503C;1 &#x952E;2 &#x503C;2 &#x952E;3 &#x503C;3 ....
+
+   msetnx&#x547D;&#x4EE4;&#xFF1A;&#x6279;&#x91CF;&#x8BBE;&#x7F6E;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x952E;&#x548C;&#x503C;,&#x6210;&#x529F;&#x5219;&#x8FD4;&#x56DE;ok
+   &gt; msetnx &#x952E;1 &#x503C;1 &#x952E;2 &#x503C;2 &#x952E;3 &#x503C;3 ....
+
+   getset&#x547D;&#x4EE4;&#xFF1A;&#x83B7;&#x53D6;&#x539F;&#x503C;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x65B0;&#x503C;
+
+   getrange&#x547D;&#x4EE4;&#xFF1A;&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x7684;&#x503C;
+   &gt;getrange &#x952E; 0,4     //&#x83B7;&#x53D6;&#x6307;&#x5B9A;0&#x5230;4&#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x503C;
+
+   mget&#x547D;&#x4EE4;&#xFF1A; &#x6279;&#x91CF;&#x83B7;&#x53D6;&#x503C;
+   &gt;mget &#x952E;1 &#x952E;2 &#x952E;3....
+
+   incr&#x547D;&#x4EE4;&#xFF1A; &#x6307;&#x5B9A;&#x952E;&#x7684;&#x503C;&#x505A;&#x52A0;&#x52A0;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD4;&#x56DE;&#x52A0;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x3002;
+   &gt;  &#x952E;        &#x4F8B;&#x5982;&#xFF1A; &gt;incr kid
+   incrby&#x547D;&#x4EE4;&#xFF1A; &#x8BBE;&#x7F6E;&#x67D0;&#x4E2A;&#x952E;&#x52A0;&#x4E0A;&#x6307;&#x5B9A;&#x503C;
+   &gt; incrby &#x952E; m    //&#x5176;&#x4E2D;m&#x53EF;&#x4EE5;&#x662F;&#x6B63;&#x6574;&#x6570;&#x6216;&#x8D1F;&#x6574;&#x6570;
+
+   decr&#x547D;&#x4EE4;&#xFF1A; &#x6307;&#x5B9A;&#x952E;&#x7684;&#x503C;&#x505A;&#x51CF;&#x51CF;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD4;&#x56DE;&#x51CF;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x3002;
+   &gt; decr &#x952E;        &#x4F8B;&#x5982;&#xFF1A; &gt;decr kid
+   decrby&#x547D;&#x4EE4;&#xFF1A; &#x8BBE;&#x7F6E;&#x67D0;&#x4E2A;&#x952E;&#x51CF;&#x4E0A;&#x6307;&#x5B9A;&#x503C;
+   &gt; decrby &#x952E; m    //&#x5176;&#x4E2D;m&#x53EF;&#x4EE5;&#x662F;&#x6B63;&#x6574;&#x6570;&#x6216;&#x8D1F;&#x6574;&#x6570;
+
+   append&#x547D;&#x4EE4;&#xFF1A;&#x7ED9;&#x6307;&#x5B9A;key&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8FFD;&#x52A0;value&#xFF0C;&#x8FD4;&#x56DE;&#x65B0;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x7684;&#x957F;&#x5EA6;
+   &gt;append &#x952E; &#x8FFD;&#x52A0;&#x5B57;&#x4E32;
+
+   strlen&#x6C42;&#x957F;&#x5EA6; &gt;strlen &#x952E;&#x540D;   //&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x3002;
+
+3. hashes&#x7C7B;&#x578B;
+------------------------------------------
+  hset&#x547D;&#x4EE4;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x952E;&#x548C;&#x503C;
+  &gt;hset hash&#x540D; &#x952E;  &#x503C;
+  &#x5982;&#xFF1A;&gt;hset user:001 name zhangsan
+
+  hsetnx&#x547D;&#x4EE4;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x952E;&#x548C;&#x503C;
+  &gt;hsetnx hash&#x540D; &#x952E;  &#x503C;  //&#x6210;&#x529F;&#x8FD4;&#x56DE;1&#xFF0C;&#x5931;&#x8D25;&#x8FD4;&#x56DE;0
+  &#x5982;&#xFF1A;&gt;hsetnx user:001 name zhangsan
+
+  hmset&#x547D;&#x4EE4;&#xFF1A; &#x6279;&#x91CF;&#x8BBE;&#x7F6E;
+
+  hget&#x547D;&#x4EE4;&#xFF1A; &#x83B7;&#x53D6;&#x6267;&#x884C;&#x54C8;&#x5E0C;&#x540D;&#x4E2D;&#x7684;&#x952E;&#x5BF9;&#x5E94;&#x503C;
+
+&gt;hexists user:001 name //&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C; &#x82E5;&#x5B58;&#x5728;&#x8FD4;&#x56DE;1
+
+&gt;hlen user:001  //&#x83B7;&#x53D6;&#x67D0;&#x54C8;&#x5E0C;user001&#x540D;&#x4E2D;&#x952E;&#x7684;&#x6570;&#x91CF; 
+
+&gt;hdel user:001 name //&#x5220;&#x9664;&#x54C8;&#x5E0C;user:001 &#x4E2D;name&#x952E;
+
+&gt;hkeys user:002   //&#x8FD4;&#x56DE;&#x54C8;&#x5E0C;&#x540D;&#x4E3A;user:002&#x4E2D;&#x7684;&#x6240;&#x6709;&#x952E;&#x3002;
+&gt;hvals user:002   //&#x8FD4;&#x56DE;&#x54C8;&#x5E0C;&#x540D;&#x4E3A;user:002&#x4E2D;&#x7684;&#x6240;&#x6709;&#x503C;&#x3002;
+&gt;hgetall user:002 //&#x8FD4;&#x56DE;&#x54C8;&#x5E0C;&#x540D;&#x4E3A;user:002&#x4E2D;&#x7684;&#x6240;&#x6709;&#x952E;&#x548C;&#x503C;&#x3002;
+
+
+4. list&#x7C7B;&#x578B;&#xFF08;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#xFF09;
+--------------------------------------------
+   list&#x5373;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x201C;&#x6808;&#x201D;&#x4E5F;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&quot;&#x961F;&#x5217;&quot;&#x3002;
+&#x64CD;&#x4F5C;&#xFF1A;
+ &gt;lpush list1 &quot;world&quot;  //&#x5728;list1&#x5934;&#x90E8;&#x538B;&#x5165;&#x4E00;&#x4E2A;&#x5B57;&#x4E32;
+ &gt;lpush list1 &quot;hello&quot;  // &#x5728;list1&#x5934;&#x90E8;&#x538B;&#x5165;&#x4E00;&#x4E2A;&#x5B57;&#x4E32;
+ &gt;lrange list1 0 -1  //&#x83B7;&#x53D6;list1&#x4E2D;&#x5185;&#x5BB9;
+    0:&#x8868;&#x793A;&#x5F00;&#x5934;  -1&#x8868;&#x793A;&#x7ED3;&#x5C3E;&#x3002;
+
+ &gt;rpush list2 &quot;world&quot;  //&#x5728;list2&#x5C3E;&#x90E8;&#x538B;&#x5165;&#x4E00;&#x4E2A;&#x5B57;&#x4E32;
+ &gt;rpush list2 &quot;hello&quot;  // &#x5728;list2&#x5C3E;&#x90E8;&#x538B;&#x5165;&#x4E00;&#x4E2A;&#x5B57;&#x4E32;
+ &gt;lrange list2 0 -1  //&#x83B7;&#x53D6;list2&#x4E2D;&#x5185;&#x5BB9;
+    0:&#x8868;&#x793A;&#x5F00;&#x5934;  -1&#x8868;&#x793A;&#x7ED3;&#x5C3E;&#x3002;
+
+ &gt;linsert list2 before &quot;hello&quot; &quot;there&quot;
+ &#x5728;key&#x5BF9;&#x5E94;list&#x7684;&#x7279;&#x5B9A;&#x4F4D;&#x7F6E;&#x524D;&#x6216;&#x540E;&#x6DFB;&#x52A0;&#x5B57;&#x7B26;&#x4E32;
+
+ &gt;lset list2 1 &quot;four&quot;
+ &#x4FEE;&#x6539;&#x6307;&#x5B9A;&#x7D22;&#x5F15;&#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x503C;
+
+ &gt;lrem list2 2 &quot;hello&quot;  //&#x5220;&#x9664;&#x524D;&#x4E24;&#x4E2A;hello&#x503C;
+ &gt;lrem list2 -2 &quot;hello&quot; //&#x5220;&#x9664;&#x540E;&#x4E24;&#x4E2A;hello&#x503C;
+ &gt;lrem list2 0 &quot;hello&quot;  //&#x5220;&#x9664;&#x6240;&#x6709;hello&#x503C;
+
+ &gt;ltrim mylist8 1 -1    //&#x5220;&#x9664;&#x6B64;&#x8303;&#x56F4;&#x5916;&#x7684;&#x503C;
+
+ &gt;lpop list2   //&#x4ECE;list2&#x7684;&#x5934;&#x90E8;&#x5220;&#x9664;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5220;&#x9664;&#x5143;&#x7D20;
+ &gt;rpop list2   //&#x4ECE;list2&#x7684;&#x5C3E;&#x90E8;&#x5220;&#x9664;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5220;&#x9664;&#x5143;&#x7D20;
+ &gt;rpoplpush list1 list2    //&#x5C06;list1&#x7684;&#x5C3E;&#x90E8;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x79FB;&#x51FA;&#x5230;list2&#x5934;&#x90E8;&#x3002;&#x5E76;&#x8FD4;&#x56DE;
+
+ &gt;lindex list2 1 //&#x8FD4;&#x56DE;list2&#x4E2D;&#x7D22;&#x5F15;&#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x5143;&#x7D20;
+ &gt;llen list2 //&#x8FD4;&#x56DE;list2&#x4E0A;&#x957F;&#x5EA6;
+
+
+ 5.sets&#x7C7B;&#x578B;&#x548C;&#x64CD;&#x4F5C;
+-------------------------------
+ &gt;sadd myset &quot;hello&quot; //&#x5411;myset&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5143;&#x7D20;
+  &#x6210;&#x529F;&#x8FD4;&#x56DE;1&#xFF0C;&#x5931;&#x8D25;(&#x91CD;&#x590D;)&#x8FD4;&#x56DE;0
+
+ &gt;smembers myset //&#x83B7;&#x53D6;myset&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;
+
+ &gt;srem myset &quot;one&quot; //&#x4ECE;myset&#x4E2D;&#x5220;&#x9664;&#x4E00;&#x4E2A;one
+  &#x6210;&#x529F;&#x8FD4;&#x56DE;1&#xFF0C;&#x5931;&#x8D25;(&#x4E0D;&#x5B58;&#x5728;)&#x8FD4;&#x56DE;0
+
+ &gt;spop myset //&#x968F;&#x673A;&#x8FD4;&#x56DE;&#x5E76;&#x5220;&#x9664;myset&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5143;&#x7D20;
+
+ &gt;sdiff myset1 myset2 //&#x8FD4;&#x56DE;&#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x7684;&#x5DEE;&#x96C6;
+ &#x4EE5;myset1&#x4E3A;&#x6807;&#x51C6;&#xFF0C;&#x83B7;&#x53D6;myset2&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x3002;
+
+ &gt;sdiffstor 
+
+
+ Redis&#x5E38;&#x7528;&#x547D;&#x4EE4;
+ =============================
+ 1. &#x952E;&#x503C;&#x76F8;&#x5173;&#x547D;&#x4EE4;
+ &gt;keys *  //&#x8FD4;&#x56DE;&#x952E;&#xFF08;key&#xFF09;
+ &gt;keys list*   //&#x8FD4;&#x56DE;&#x540D;&#x4EE5;list&#x5F00;&#x5934;&#x7684;&#x6240;&#x6709;&#x952E;&#xFF08;key&#xFF09;
+ &gt;exists list1  //&#x5224;&#x65AD;&#x952E;&#x540D;&#x4E3A;list1&#x7684;&#x662F;&#x5426;&#x5B58;&#x5728;
+        &#x5B58;&#x5728;&#x8FD4;&#x56DE;1&#xFF0C; &#x4E0D;&#x5B58;&#x5728;&#x8FD4;&#x56DE;0
+ &gt;del list1 //&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x952E;&#xFF08;&#x540D;&#x4E3A;list1&#xFF09;
+ &gt;expire list1 10 //&#x8BBE;&#x7F6E;&#x952E;&#x540D;&#x4E3A;list1&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x4E3A;10&#x79D2;&#x540E;
+ &gt;ttl list1 //&#x67E5;&#x770B;&#x952E;&#x540D;&#x4E3A;list1&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x82E5;&#x4E3A;-1&#x8868;&#x793A;&#x4EE5;&#x8FC7;&#x671F;
+
+ &gt;move age 1 //&#x5C06;&#x952E;&#x540D;age&#x7684;&#x8F6C;&#x79FB;&#x5230;1&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x3002;
+ &gt;select 1 //&#x8868;&#x793A;&#x8FDB;&#x5165;&#x5230;1&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x5728;0&#x6570;&#x636E;&#x5E93; 
+
+ &gt;persist age //&#x79FB;&#x9664;age&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF08;&#x8BBE;&#x7F6E;&#x4E3A;&#x8FC7;&#x671F;&#xFF09;
+
+
+
+ Redis&#x9AD8;&#x7EA7;&#x5B9E;&#x7528;&#x7279;&#x6027;
+==================================
+ 1. &#x5B89;&#x5168;&#x6027;&#xFF1A;&#x4E3A;Redis&#x6DFB;&#x52A0;&#x5BC6;&#x7801;
+-------------------------------
+   1.&#x8FDB;&#x5165;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;
+     vi /usr/local/redis/etc/redis.conf
+     &#x8BBE;&#x7F6E;&#xFF1A;requirepass redis&#x7684;&#x5BC6;&#x7801;
+   2. &#x91CD;&#x542F;&#x670D;&#x52A1;&#xFF1A;
+    # ./redis-cli shutdown &#x6267;&#x884C;&#x5173;&#x95ED;
+    # ./redis-server /usr/local/redis/etc/redis.conf  &#x542F;&#x52A8; 
+   3. &#x767B;&#x5F55;&#xFF08;&#x4E24;&#x79CD;&#xFF09;
+    # ./redis-cli &#x5BA2;&#x6237;&#x7AEF;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x670D;&#x52A1;&#x5668;
+    &gt;auth &#x5BC6;&#x7801;&#x503C;  //&#x6388;&#x6743;&#x540E;&#x65B9;&#x53EF;&#x4F7F;&#x7528;
+
+    # ./redis-cli -a  &#x5BC6;&#x7801; //&#x8FDE;&#x63A5;&#x65F6;&#x6307;&#x5B9A;&#x5BC6;&#x7801;&#x6765;&#x8FDB;&#x884C;&#x6388;&#x6743;
+
+
+ 2. &#x4E3B;&#x4ECE;&#x590D;&#x5236;
+------------------------------------------
+    &#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#xFF1A;
+     1.&#x5148;&#x5C06;linux&#x865A;&#x62DF;&#x673A;&#x5173;&#x95ED;&#xFF0C;&#x4E4B;&#x540E;&#x514B;&#x9686;&#x4E00;&#x4E2A;&#x3002;
+     2.&#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#xFF1A;master&#xFF08;&#x4E3B;&#xFF09;&#x548C;slave&#xFF08;&#x4ECE;&#xFF09;
+     3. &#x5728;slave&#xFF08;&#x4ECE;&#xFF09;&#x4E2D;&#x914D;&#x7F6E;&#x4E00;&#x4E0B;ip&#x5730;&#x5740;
+        # ifconfig eth0 192.168.128.229
+        # ping &#x4E00;&#x4E0B;&#x770B;&#x770B;&#x901A;&#x4E0D;&#x901A;&#x3002;
+     4. &#x914D;&#x7F6E;&#x4ECE;&#x673A;
+        &#x8FDB;&#x5165;&#xFF1A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+        slaveof  192.168.128.228 6379   //&#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x4E3B;&#x673A;&#x7684;Redis&#x7684;ip&#x548C;&#x7AEF;&#x53E3;
+        masterauth &#x5BC6;&#x7801;  //&#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x5BC6;&#x7801;
+
+        &#x6700;&#x540E;&#x542F;&#x52A8;slave&#xFF08;&#x4ECE;&#xFF09;&#x673A;&#x7684;Redis&#x670D;&#x52A1;&#x3002;
+
+     &#x5176;&#x4ED6;&#xFF1A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;info&#x547D;&#x4EE4;&#x4E2D;&#x7684;role&#x5C5E;&#x6027;&#x67E5;&#x770B;&#x81EA;&#x5DF1;&#x89D2;&#x8272;&#x662F;master&#x3001;slave
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../week2/6.html" class="navigation navigation-prev " aria-label="Previous page: 6. Docker基础"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../week2/8.html" class="navigation navigation-next " aria-label="Next page: 8. 分布式爬虫的实战"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
