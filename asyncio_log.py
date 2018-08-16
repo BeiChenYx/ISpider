@@ -1,13 +1,5 @@
 # IPython log file
 
-get_ipython().run_line_magic('ls', '')
-get_ipython().run_line_magic('logstop', './text.py')
-get_ipython().run_line_magic('logstart', './text.py')
-get_ipython().run_line_magic('logstop', '')
-get_ipython().run_line_magic('ls', '')
-get_ipython().run_line_magic('logstart', './asyncio_log.py')
-get_ipython().run_line_magic('ls', '')
-get_ipython().run_line_magic('pwd', '')
 def consumer():
     r = ''
     while True:
