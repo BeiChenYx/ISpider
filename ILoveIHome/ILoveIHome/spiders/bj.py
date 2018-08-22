@@ -40,11 +40,11 @@ class BjSpider(scrapy.Spider):
                 # item['time'] = ' '.join([time.strip() for time in home.xpath(time_xpath)])
                 # item['type_home'] = ' '.join([ty.strip() for ty in home.xpath(type_xpath)])
                 # item['price'] = ' '.join([price.strip() for price in home.xpath(price_xpath)])
-                item['covered'] = home.xpath(covered_xpath)
-                item['addr'] = home.xpath(addr_xpath)
-                item['time'] = home.xpath(time_xpath)
-                item['type_home'] = home.xpath(type_xpath)
-                item['price'] = home.xpath(price_xpath)
+                item['covered'] = home.xpath(covered_xpath).extract_first()
+                item['addr'] = home.xpath(addr_xpath).extract_first()
+                item['time'] = home.xpath(time_xpath).extract_first
+                item['type_home'] = home.xpath(type_xpath).extract_first()
+                item['price'] = home.xpath(price_xpath).extract_first()
                 yield item
             except Exception as err:
                 print(str(err))
