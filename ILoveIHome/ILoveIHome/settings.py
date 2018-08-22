@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for master project
+# Scrapy settings for ILoveIHome project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'master'
+BOT_NAME = 'ILoveIHome'
 
-SPIDER_MODULES = ['master.spiders']
-NEWSPIDER_MODULE = 'master.spiders'
+SPIDER_MODULES = ['ILoveIHome.spiders']
+NEWSPIDER_MODULE = 'ILoveIHome.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'master (+http://www.yourdomain.com)'
+#USER_AGENT = 'ILoveIHome (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'master.middlewares.MasterSpiderMiddleware': 543,
+#    'ILoveIHome.middlewares.IloveihomeSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'master.middlewares.MasterDownloaderMiddleware': 543,
+#    'ILoveIHome.middlewares.IloveihomeDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'master.pipelines.MasterPipeline': 300,
+#    'ILoveIHome.pipelines.IloveihomePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
