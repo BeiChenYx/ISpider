@@ -34,17 +34,17 @@ class BjSpider(scrapy.Spider):
                 price_xpath = ('./div[@class="price fontS16"]/text() | '
                             './div[@class="price fontS16"]/i/text()')
 
-                item['name'] = home.xpath(name_xpath)
+                item['name'] = home.xpath(name_xpath).extract_first().strip()
                 # item['covered'] = ' '.join([covered.strip() for covered in home.xpath(covered_xpath)])
                 # item['addr'] = ' '.join([addr.strip() for addr in home.xpath(addr_xpath)])
                 # item['time'] = ' '.join([time.strip() for time in home.xpath(time_xpath)])
                 # item['type_home'] = ' '.join([ty.strip() for ty in home.xpath(type_xpath)])
                 # item['price'] = ' '.join([price.strip() for price in home.xpath(price_xpath)])
-                item['covered'] = home.xpath(covered_xpath).extract_first()
-                item['addr'] = home.xpath(addr_xpath).extract_first()
-                item['time'] = home.xpath(time_xpath).extract_first
-                item['type_home'] = home.xpath(type_xpath).extract_first()
-                item['price'] = home.xpath(price_xpath).extract_first()
+                item['covered'] = home.xpath(covered_xpath).extract_first().strip()
+                item['addr'] = home.xpath(addr_xpath).extract_first().strip()
+                item['time'] = home.xpath(time_xpath).extract_first().strip()
+                item['type_home'] = home.xpath(type_xpath).extract_first().strip()
+                item['price'] = home.xpath(price_xpath).extract_first().strip()
                 yield item
             except Exception as err:
                 print(str(err))
@@ -54,5 +54,5 @@ class BjSpider(scrapy.Spider):
         print('='*40)
         print(next_url)
         print('='*40)
-        if not next_url:
+        if next_url:
             yield scrapy.Request(next_url, callback=self.parse)
