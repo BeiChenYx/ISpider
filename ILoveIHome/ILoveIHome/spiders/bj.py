@@ -35,16 +35,24 @@ class BjSpider(scrapy.Spider):
                             './div[@class="price fontS16"]/i/text()')
 
                 item['name'] = home.xpath(name_xpath)
-                item['covered'] = ' '.join([covered.strip() for covered in home.xpath(covered_xpath)])
-                item['addr'] = ' '.join([addr.strip() for addr in home.xpath(addr_xpath)])
-                item['time'] = ' '.join([time.strip() for time in home.xpath(time_xpath)])
-                item['type_home'] = ' '.join([ty.strip() for ty in home.xpath(type_xpath)])
-                item['price'] = ' '.join([price.strip() for price in home.xpath(price_xpath)])
+                # item['covered'] = ' '.join([covered.strip() for covered in home.xpath(covered_xpath)])
+                # item['addr'] = ' '.join([addr.strip() for addr in home.xpath(addr_xpath)])
+                # item['time'] = ' '.join([time.strip() for time in home.xpath(time_xpath)])
+                # item['type_home'] = ' '.join([ty.strip() for ty in home.xpath(type_xpath)])
+                # item['price'] = ' '.join([price.strip() for price in home.xpath(price_xpath)])
+                item['covered'] = home.xpath(covered_xpath)
+                item['addr'] = home.xpath(addr_xpath)
+                item['time'] = home.xpath(time_xpath)
+                item['type_home'] = home.xpath(type_xpath)
+                item['price'] = home.xpath(price_xpath)
                 yield item
             except Exception as err:
                 print(str(err))
 
         # 再获取下一页的url地址
         next_url = response.selector.xpath('//div[@class="pagination blue"]/ul/li[last()]/a/@href').extract_first()
+        print('='*40)
+        print(next_url)
+        print('='*40)
         if not next_url:
             yield scrapy.Request(next_url, callback=self.parse)
