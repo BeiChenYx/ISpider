@@ -42,5 +42,6 @@ class BjSpider(scrapy.Spider):
             yield item
 
         # 再获取下一页的url地址
-        next_url = response.selector.xpath('//div[@class="pagination blue"]/ul/li[last()]/a/@href')
-        yield scrapy.Request(next_url, callback=self.parse)
+        next_url = response.selector.xpath('//div[@class="pagination blue"]/ul/li[last()]/a/@href').extract_first()
+        if not next_url:
+            yield scrapy.Request(next_url, callback=self.parse)
