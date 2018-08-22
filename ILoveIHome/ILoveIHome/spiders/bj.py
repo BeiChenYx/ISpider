@@ -23,23 +23,26 @@ class BjSpider(scrapy.Spider):
         # 先获取爬取的页面中的房屋信息
         homes = response.selector.xpath('//div[@class="houseList_list"]')
         for home in homes:
-            item = IloveihomeItem()
-            txt_xpath = './/div[@class="houseList_list_txt fl"]'
-            name_xpath = txt_xpath + '/div[@class="txt1 style"]/h3/a/text()'
-            covered_xpath = txt_xpath + '/div[@class="style"]//span/text()'
-            addr_xpath = txt_xpath + '/div[@class="style address"]//span/text()'
-            time_xpath = txt_xpath + '/div[@class="style"][2]//span/text()'
-            type_xpath = txt_xpath + '/div[@class="title"]//span/text()'
-            price_xpath = ('./div[@class="price fontS16"]/text() | '
-                           './div[@class="price fontS16"]/i/text()')
+            try:
+                item = IloveihomeItem()
+                txt_xpath = './div[@class="houseList_list_txt fl"]'
+                name_xpath = txt_xpath + '/div[@class="txt1 style"]/h3/a/text()'
+                covered_xpath = txt_xpath + '/div[@class="style"]//span/text()'
+                addr_xpath = txt_xpath + '/div[@class="style address"]//span/text()'
+                time_xpath = txt_xpath + '/div[@class="style"][2]//span/text()'
+                type_xpath = txt_xpath + '/div[@class="title"]//span/text()'
+                price_xpath = ('./div[@class="price fontS16"]/text() | '
+                            './div[@class="price fontS16"]/i/text()')
 
-            item['name'] = home.xpath(name_xpath)
-            item['covered'] = ' '.join([covered.strip() for covered in home.xpath(covered_xpath)])
-            item['addr'] = ' '.join([addr.strip() for addr in home.xpath(addr_xpath)])
-            item['time'] = ' '.join([time.strip() for time in home.xpath(time_xpath)])
-            item['type_home'] = ' '.join([ty.strip() for ty in home.xpath(type_xpath)])
-            item['price'] = ' '.join([price.strip() for price in home.xpath(price_xpath)])
-            yield item
+                item['name'] = home.xpath(name_xpath)
+                item['covered'] = ' '.join([covered.strip() for covered in home.xpath(covered_xpath)])
+                item['addr'] = ' '.join([addr.strip() for addr in home.xpath(addr_xpath)])
+                item['time'] = ' '.join([time.strip() for time in home.xpath(time_xpath)])
+                item['type_home'] = ' '.join([ty.strip() for ty in home.xpath(type_xpath)])
+                item['price'] = ' '.join([price.strip() for price in home.xpath(price_xpath)])
+                yield item
+            except Exception as err:
+                print(str(err))
 
         # 再获取下一页的url地址
         next_url = response.selector.xpath('//div[@class="pagination blue"]/ul/li[last()]/a/@href').extract_first()
