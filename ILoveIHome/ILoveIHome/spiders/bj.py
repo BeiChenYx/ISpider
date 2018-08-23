@@ -15,11 +15,9 @@ class BjSpider(scrapy.Spider):
     name = 'bj'
     allowed_domains = ['fang.5i5j.com']
     start_urls = ['https://fang.5i5j.com/bj/loupan/']
-    # start_urls = ['https://www.baidu.com']
 
     def parse(self, response):
         print('response len: ', len(response.body))
-        # print(response.body)
         # 先获取爬取的页面中的房屋信息
         homes = response.selector.xpath('//div[@class="houseList_list"]')
         for home in homes:
@@ -32,7 +30,7 @@ class BjSpider(scrapy.Spider):
                 time_xpath = txt_xpath + '/div[@class="style"][2]//span/text()'
                 type_xpath = txt_xpath + '/div[@class="title"]//span/text()'
                 price_xpath = ('./div[@class="price fontS16"]/text() | '
-                            './div[@class="price fontS16"]/i/text()')
+                               './div[@class="price fontS16"]/i/text()')
 
                 item['name'] = home.xpath(name_xpath).extract_first().strip()
                 item['covered'] = ' '.join([covered.strip() for covered in home.xpath(covered_xpath).extract()])
@@ -40,11 +38,6 @@ class BjSpider(scrapy.Spider):
                 item['time'] = ' '.join([time.strip() for time in home.xpath(time_xpath).extract()])
                 item['type_home'] = ' '.join([ty.strip() for ty in home.xpath(type_xpath).extract()])
                 item['price'] = ' '.join([price.strip() for price in home.xpath(price_xpath).extract()])
-                # item['covered'] = home.xpath(covered_xpath).extract_first().strip()
-                # item['addr'] = home.xpath(addr_xpath).extract_first().strip()
-                # item['time'] = home.xpath(time_xpath).extract_first().strip()
-                # item['type_home'] = home.xpath(type_xpath).extract_first().strip()
-                # item['price'] = home.xpath(price_xpath).extract_first().strip()
                 yield item
             except Exception as err:
                 print(str(err))
