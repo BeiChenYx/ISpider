@@ -65,9 +65,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'ILoveIHome.pipelines.IloveihomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'ILoveIHome.pipelines.IloveihomePipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -89,3 +89,22 @@ DEFAULT_REQUEST_HEADERS = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+
+# 指定使用scrapy-redis的去重
+# DUPEFILTER_CLASS = 'scrapy_redis.dupefilter.RFPDupeFilter'
+
+# 指定使用scrapy-redis的调度器
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+
+# 在redis中保持scrapy-redis用到的各个队列，从而允许暂停和暂停后恢复，也就是不清理redis queues
+# SCHEDULER_PERSIST = True
+
+# 指定排序爬取地址时使用的队列，
+# 默认的 按优先级排序(Scrapy默认)，由sorted set实现的一种非FIFO、LIFO方式。
+# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
+
+# REDIS_URL = 'redis:password//127.0.0.1:6379' # 一般情况可以省去
+REDIS_HOST = '' # 也可以根据情况改成 localhost
+REDIS_PORT = 6379
+REDIS_PASS = ''
