@@ -91,17 +91,17 @@ ITEM_PIPELINES = {
 
 
 # 指定使用scrapy-redis的去重
-# DUPEFILTER_CLASS = 'scrapy_redis.dupefilter.RFPDupeFilter'
+DUPEFILTER_CLASS = 'scrapy_redis.dupefilter.RFPDupeFilter'
 
 # 指定使用scrapy-redis的调度器
 # SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 
 # 在redis中保持scrapy-redis用到的各个队列，从而允许暂停和暂停后恢复，也就是不清理redis queues
-# SCHEDULER_PERSIST = True
+SCHEDULER_PERSIST = True
 
 # 指定排序爬取地址时使用的队列，
 # 默认的 按优先级排序(Scrapy默认)，由sorted set实现的一种非FIFO、LIFO方式。
-# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 
 REDIS_URL = 'redis://127.0.0.1:6379' # 一般情况可以省去
 REDIS_HOST = '127.0.0.1' # 也可以根据情况改成 localhost

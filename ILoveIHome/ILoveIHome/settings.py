@@ -104,7 +104,7 @@ SCHEDULER_PERSIST = True
 # 默认的 按优先级排序(Scrapy默认)，由sorted set实现的一种非FIFO、LIFO方式。
 SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 
-#REDIS_URL = 'redis://127.0.0.1:6379' # 一般情况可以省去
+REDIS_URL = 'redis://127.0.0.1:6379' # 一般情况可以省去
 REDIS_HOST = '127.0.0.1' # 也可以根据情况改成 localhost
 REDIS_PORT = 6379
 # REDIS_PASS = 'ISpider'
