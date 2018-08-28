@@ -3,7 +3,7 @@ import scrapy
 
 from scrapy_redis.spiders import RedisSpider
 
-from ILoveIHomeSlave.items import IloveihomeslaveItem
+from items import IloveihomeslaveItem
 
 class BjSpider(RedisSpider):
     name = 'bj'
