@@ -3,7 +3,7 @@ import scrapy
 
 from scrapy_redis.spiders import RedisSpider
 
-from items import IloveihomeslaveItem
+from ILoveIHomeSlave.items import IloveihomeslaveItem
 
 class BjSpider(RedisSpider):
     name = 'bj'
@@ -23,7 +23,7 @@ class BjSpider(RedisSpider):
         print('bjurl: ', response.url)
         print('=='*30)
         try:
-            item = IloveihomeItem()
+            item = IloveihomeslaveItem()
             txt_xpath = './div[@class="houseList_list_txt fl"]'
             name_xpath = txt_xpath + '/div[@class="txt1 style"]/h3/a/text()'
             covered_xpath = txt_xpath + '/div[@class="style"]//span/text()'
