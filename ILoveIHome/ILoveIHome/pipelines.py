@@ -12,13 +12,12 @@ import redis
 
 class IloveihomePipeline(object):
 
-    def __init__(self,host,port, password):
+    def __init__(self,host,port):
         #连接redis数据库
-        print('redis info: ', host, port, password)
+        print('redis info: ', host, port)
         self.r = redis.Redis(
             str(host),
-            int(port),
-            password=str(password),
+            int(port)
         )
 
     @classmethod
@@ -29,7 +28,6 @@ class IloveihomePipeline(object):
         return cls(
             host=crawler.settings.get("REDIS_HOST"),
             port=crawler.settings.get("REDIS_PORT"),
-            password=crawler.settings.get('REDIS_PASS')
         )
 
     def process_item(self, item, spider):
