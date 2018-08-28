@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for ILoveIHome project
+# Scrapy settings for ILoveIHomeSlave project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'ILoveIHome'
+BOT_NAME = 'ILoveIHomeSlave'
 
-SPIDER_MODULES = ['ILoveIHome.spiders']
-NEWSPIDER_MODULE = 'ILoveIHome.spiders'
+SPIDER_MODULES = ['ILoveIHomeSlave.spiders']
+NEWSPIDER_MODULE = 'ILoveIHomeSlave.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = ''
+#USER_AGENT = 'ILoveIHomeSlave (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -27,7 +27,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 3
+#DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -39,22 +39,21 @@ DOWNLOAD_DELAY = 3
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-DEFAULT_REQUEST_HEADERS = {
-  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-  'Accept-Language': 'en',
-  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3486.0 Safari/537.36'
-}
+#DEFAULT_REQUEST_HEADERS = {
+#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+#   'Accept-Language': 'en',
+#}
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'ILoveIHome.middlewares.IloveihomeSpiderMiddleware': 543,
+#    'ILoveIHomeSlave.middlewares.IloveihomeslaveSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'ILoveIHome.middlewares.IloveihomeDownloaderMiddleware': 543,
+#    'ILoveIHomeSlave.middlewares.IloveihomeslaveDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,14 +65,14 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'ILoveIHome.pipelines.IloveihomePipeline': 300,
+   'ILoveIHomeSlave.pipelines.IloveihomeslavePipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-# AUTOTHROTTLE_START_DELAY = 5
+#AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
 #AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
@@ -92,19 +91,19 @@ ITEM_PIPELINES = {
 
 
 # 指定使用scrapy-redis的去重
-DUPEFILTER_CLASS = 'scrapy_redis.dupefilter.RFPDupeFilter'
+# DUPEFILTER_CLASS = 'scrapy_redis.dupefilter.RFPDupeFilter'
 
 # 指定使用scrapy-redis的调度器
 # SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 
 # 在redis中保持scrapy-redis用到的各个队列，从而允许暂停和暂停后恢复，也就是不清理redis queues
-SCHEDULER_PERSIST = True
+# SCHEDULER_PERSIST = True
 
 # 指定排序爬取地址时使用的队列，
 # 默认的 按优先级排序(Scrapy默认)，由sorted set实现的一种非FIFO、LIFO方式。
-SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
+# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 
-REDIS_URL = 'redis:ISpider//120.79.8.88:6379' # 一般情况可以省去
+REDIS_URL = 'redis:ISpider//120.79.7.88:6379' # 一般情况可以省去
 REDIS_HOST = '120.79.7.88' # 也可以根据情况改成 localhost
 REDIS_PORT = 6379
 REDIS_PASS = 'ISpider'
