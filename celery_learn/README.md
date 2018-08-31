@@ -1,6 +1,6 @@
 # Celery框架官方学习笔记
 
-```
+```text
 版本信息: Celery 4.2.0
 ```
 
@@ -9,11 +9,13 @@
 Celery配置方法
 
 直接使用配置值进行配置
+
 ```python
 app.conf.enable_utc = True
 ```
 
 也可以使用update配置多个变量
+
 ```python
 app.conf.update(
     enable_utr=True,
@@ -22,6 +24,7 @@ app.conf.update(
 ```
 
 使用配置模块文件的方式
+
 ```python
 from celery import Celery
 
@@ -80,10 +83,19 @@ response = requests.get(URL, timeout=(connect_timeout, read_timeout))
 ### Basics
 
 通过使用Task()装饰器，可以轻松地从任何可调用的任务创建任务：
+
 ```python
 from .models import User
 
 @app.task
+def create_user(username, password):
+    User.objects.create(username=username, password=password)
+```
+
+还可以为任务设置许多选项，这些选项可以指定为装饰器的参数:
+
+```python
+@app.task(serializer='json')
 def create_user(username, password):
     User.objects.create(username=username, password=password)
 ```
