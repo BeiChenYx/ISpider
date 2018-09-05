@@ -7,9 +7,7 @@ import json
 import requests
 from pyquery import PyQuery as pq
 
-__headers__ = {
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0"
-}
+from common import request
 
 def save_result(data):
     """
@@ -45,11 +43,7 @@ def get_page(url):
     """
     :url 需要爬取的地址
     """
-    rst = requests.get(url, headers=__headers__)
-    print('rst.status_code: ', rst.status_code)
-    if rst.status_code == 200:
-        return rst.text
-    return ''
+    return get(url)
 
 def main():
     """
