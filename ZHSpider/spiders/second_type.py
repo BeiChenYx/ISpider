@@ -14,7 +14,6 @@ def save_result(info):
     """
     with open('secondType.txt', 'a', encoding='utf-8') as fi:
         for line in info:
-            print(line)
             fi.write(line+'/hot\n')
 
 def parse_result(data):
@@ -67,4 +66,8 @@ def main():
 
 
 if __name__ == '__main__':
+    with open('./log.log', 'a', encoding='utf-8') as fi:
+        fi.write(str(time.time()) + '\n')
     main()
+    with open('./log.log', 'a', encoding='utf-8') as fi:
+        fi.write(str(time.time()) + '\n')
