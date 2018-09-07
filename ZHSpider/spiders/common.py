@@ -19,6 +19,7 @@ def get(url, isjson=False):
     获取url的页面
     """
     rst = requests.get(url, headers=header)
+    print(url)
     print('rst.status_code: ', rst.status_code)
     if rst.status_code == 200:
         if isjson:
