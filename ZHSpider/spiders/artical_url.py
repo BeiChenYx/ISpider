@@ -3,7 +3,7 @@
 """
 import re
 import time
-from xml import etree
+from lxml import etree
 
 import common
 
@@ -13,12 +13,12 @@ def get_artical_url(url):
     通过翻页的方式获取下一个动态加载的文章url
     """
     rst = common.get(url, isjson=True)
+    print('rst: ', rst)
     urls = list()
     for line in rst['data']:
-        url = line['url']
+        url = line['target']['url']
         urls.append(url)
     return urls, rst['paging']['next'], rst['paging']['is_end']
-    
 
 def save_title_url(url):
     """
@@ -27,7 +27,7 @@ def save_title_url(url):
     with open('title_url.txt', 'a', encoding='utf-8') as fi:
         for line in url:
             print(line)
-            fi.write(line)
+            fi.write(line + '\n')
 
 def parse_first_url(html):
     """
@@ -35,13 +35,13 @@ def parse_first_url(html):
     以供翻页使用
     """
     rst = etree.HTML(html) 
-    title_url = rst.xpath('//h2[@class="ContentItem-title"]/a/@href')
-    next_url = re.findall(
-        ('http://www.zhihu.com/api/v[0-9]/topics/[0-9]+/feeds/top_activity\?'
-        'include=.*?\&amp;limit=.*?\&amp;after_id=[0-9.]+'),
-        html
-    )
-    return title_url, next_url[0]
+    title_url = rst.xpath('//h2[@class="ContentItem-title"]/div/a/@href')
+    part = '(http://www.zhihu.com/api/v4/topics/[0-9]+/feeds/top_activity)\?include=(.*?)&amp;limit=([0-9]+)&amp;after_id=([0-9.]+)'
+    rst = re.findall(part, html, re.I)
+    if len(rst) == 0:
+        return '', ''
+    url = rst[0][0] + '?include=' + rst[0][1] + '&limit=' + rst[0][2] + '&after_id=' + rst[0][3]
+    return title_url, url
 
 def get_second_info(url):
     """
@@ -61,8 +61,8 @@ def get_second_type(path):
 
 def main():
     lines = get_second_type('./secondType.txt')
-    for line in lines:
-        html = get_second_info(common.domain_name + line)
+    for line in lines[:1]:
+        html = get_second_info(common.domain_name + line.strip())
         if not html:
             continue
         title_url, next_url = parse_first_url(html)
@@ -81,7 +81,7 @@ def main():
             time.sleep(1)
 
         time.sleep(2)
-        
+
 
 if __name__ == '__main__':
     main()

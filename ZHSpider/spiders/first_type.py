@@ -4,10 +4,10 @@
 """
 import json
 
-import requests
 from pyquery import PyQuery as pq
 
-from common import request
+from common import get
+
 
 def save_result(data):
     """
