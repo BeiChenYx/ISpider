@@ -13,12 +13,26 @@ def get_artical_url(url):
     通过翻页的方式获取下一个动态加载的文章url
     """
     rst = common.get(url, isjson=True)
-    print('rst: ', rst)
+    # 数据中有两种数据，分别是问答和文章两种，需要分开处理
     urls = list()
-    for line in rst['data']:
-        url = line['target']['url']
-        urls.append(url)
-    return urls, rst['paging']['next'], rst['paging']['is_end']
+    artical_list = list()
+    question_list = list()
+    if rst['data']['target']['type'] == 'answer':
+        question_id = rst['data']['target']['question']['id']
+        answser_id = rst['data']['target']['id']
+        question_url = '%s/question/%d/answer/%d' % (
+                common.domain_name, question_id, answser_id
+        )
+        question_list.append(question_url)
+    elif rst['data']['target']['type'] == 'article':
+        artical_url =  rst['data']['target']['url']
+        artical_list.append(artical_url)
+    else:
+        print('检测到异常类型....')
+    next_url = rst['paging']['next']
+    is_end = rst['paging']['is_end']
+    return artical_list, question_list, next_url, is_end
+
 
 def save_title_url(artical, question):
     """
@@ -96,11 +110,11 @@ def main():
             if len(task_url) == 0:
                 break
             url = task_url.pop()
-            artical_url, next_request_url, is_end = get_artical_url(url)
-            save_title_url(artical_url)
-            if is_end:
+            info_paging = get_artical_url(url)
+            save_title_url(info_paging[:1])
+            if info_paging[-1]:
                 break
-            task_url.insert(0, next_request_url)
+            task_url.insert(0, info_paging[-2])
             time.sleep(1)
 
         time.sleep(2)
