@@ -66,8 +66,8 @@ def main():
 
 
 if __name__ == '__main__':
-    with open('./log.log', 'a', encoding='utf-8') as fi:
+    with open('./second_type.log', 'a', encoding='utf-8') as fi:
         fi.write(str(time.time()) + '\n')
     main()
-    with open('./log.log', 'a', encoding='utf-8') as fi:
+    with open('./second_type.log', 'a', encoding='utf-8') as fi:
         fi.write(str(time.time()) + '\n')
