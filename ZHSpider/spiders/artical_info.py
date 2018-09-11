@@ -14,7 +14,6 @@
     评论者的url_token(定位到评论者)
     评论创建的时间
     评论点赞数量
-    评论内容
 """
 from lxml import etree
 
@@ -47,19 +46,29 @@ def parse_artical_info(html):
 de parse_comment_info(data):
     """
     提取评论信息
-        文章评论数量
-
-    评论需要提取的信息:
-        评论者名字
-        评论者的url_token(定位到评论者)
-        评论创建的时间
-        评论点赞数量
-        评论内容
     """
+    # 评论总数
     common_counts = data['common_counts']
+    commons = list()
     rst = data['data']
     for comment in rst:
-        pass 
+        # 作者名字
+        author = comment['author']['member']['name']
+        # 作者的url_token 
+        url_token = comment['author']['member']['url_token']
+        # 评论创建时间
+        create_time = comment['created_time']
+        # 评论的点赞数
+        vote_count = comment['vote_count']
+        info = {
+                'author': author,
+                'url_token': url_token,
+                'create_time': create_time,
+                'vote_count': vote_count
+        }
+        commons.append(info)
+    return commons, common_counts, rst['pagind']['is_end']
+
 
 def get_artical_info(url):
     """
