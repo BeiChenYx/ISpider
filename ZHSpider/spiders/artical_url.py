@@ -13,6 +13,8 @@ def get_artical_url(url):
     通过翻页的方式获取下一个动态加载的文章url
     """
     rst = common.get(url, isjson=True)
+    if rst == '':
+        return None
     # 数据中有两种数据，分别是问答和文章两种，需要分开处理
     urls = list()
     artical_list = list()
@@ -118,6 +120,8 @@ def main():
                 break
             url = task_url.pop()
             info_paging = get_artical_url(url)
+            if not info_paging:
+                continue
             save_title_url(info_paging[0], info_paging[1])
             if info_paging[-1]:
                 break
@@ -128,8 +132,11 @@ def main():
 
 
 if __name__ == '__main__':
+    starting = time.time()
     with open('./artical_url.log', 'a', encoding='utf-8') as fi:
-        fi.write(str(time.time()) + '\n')
+        fi.write('starting: ' + str(starting) + '\n')
     main()
+    ending = time.time()
     with open('./artical_url.log', 'a', encoding='utf-8') as fi:
-        fi.write(str(time.time()) + '\n')
+        fi.write('ending' + str(ending) + '\n')
+        fi.write('任务耗时: ' + str((ending - starting) / 60 + 'min\n'))
