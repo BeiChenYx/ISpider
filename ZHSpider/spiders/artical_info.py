@@ -20,6 +20,21 @@ from lxml import etree
 import common
 
 
+def save_artical_comment(artical, comment):
+    """
+    保存文章信息和评论信息
+    :artical 文章信息，字典格式
+    :comment 评论信息，字典列表格式
+    """
+    with open('./artical_info.txt', 'a', encoding='utf-8') as fi:
+        fi.write(','.join([str(value) for _, value in artical.items()])) 
+
+    with open('./artical_comment_info.txt', 'a', encoding='utf-8') as fi:
+        for com in comment:
+            info = [str(value) for _, value in com]
+            info.insert(0, artical['url'])
+            fi.write(','.join(info))
+
 def parse_artical_info(html):
     """
     提取文章信息
@@ -41,9 +56,10 @@ def parse_artical_info(html):
     # 点赞数
     likenum = rst.xpath('//span[@class="Voters"]/button/text()')[0]
     
-    return name, author, author_url, likenum
+    return {'name': name, 'author': author, 
+            'author_url': author_url, 'likenum': likenum}
 
-de parse_comment_info(data):
+def parse_comment_info(data):
     """
     提取评论信息
     """
@@ -76,10 +92,17 @@ def get_artical_info(url):
     """
     return common.get(url)
 
-def get_comment_info(url):
+def get_comment_info(artical_id, offset=0, limit=20):
     """
     获取评论信息
     """
+    host = 'https://www.zhihu.com/api/v4/articles/'
+    url = host + artical_id + '/comments?include='\
+            'data%5B*%5D.author%2Ccollapsed%2Creply_to_author\
+            %2Cdisliked%2Ccontent%2Cvoting%2Cvote_count\
+            %2Cis_parent_author%2Cis_author%2Calgorithm_right\
+            &order=normal&limit=' + str(limit) + '&offset='\
+            + str(offset) + '&status=open'
     return common.get(url, isjson=True)
 
 def get_artical_info_url():
@@ -95,14 +118,29 @@ def main():
     for url in artical_urls:
         print(url)
         html = get_artical_info(url)
-        artical_info = parse_artical_info(html)
-        url_comment = 'https://www.zhihu.com/api/v4/articles/' \
-                + url.split('/')[-1] + '/comments?include=\
-                data%5B*%5D.author%2Ccollapsed%2Creply_to_author\
-                %2Cdisliked%2Ccontent%2Cvoting%2Cvote_count\
-                %2Cis_parent_author%2Cis_author%2Calgorithm_right\
-                &order=normal&limit=20&offset=0&status=open'
+        if not html:
+            print('html: ', html)
+            continue
 
+        artical_info = parse_artical_info(html)
+        artical_id = url.split('/')[-1]
+        rst = get_comment_info(artical_id)
+        print('rst: ', rst)
+        comment_info = parse_comment_info(rst)
+        artical_info['common_counts'] = comment_info[1]
+        artical_info['url'] = url
+        comments = list()
+        comments.extends(comment_info[0])
+        if not comment_info[-1]:
+            offset = 0
+            while True:
+                offset = offset + 20
+                info = get_comment_info(artical_id, offset=offset)
+                comments.extends(info[0])
+                # TODO: 处理评论信息
+                if info[-1]:
+                    break
+        save_artical_comment(artical_info, comments)
 
 
 if __name__ == '__main__':
