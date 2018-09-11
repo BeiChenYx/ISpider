@@ -73,4 +73,4 @@ if __name__ == '__main__':
     ending = time.time()
     with open('./second_type.log', 'a', encoding='utf-8') as fi:
         fi.write('ending' + str(ending) + '\n')
-        fi.write('任务耗时: ' + str((ending - starting) / 60 + 'min\n'))
+        fi.write('任务耗时: ' + str((ending - starting) / 60) + 'min\n')
