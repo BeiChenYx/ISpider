@@ -15,6 +15,8 @@
     评论创建的时间
     评论点赞数量
 """
+import time
+
 from lxml import etree
 
 import common
@@ -27,13 +29,17 @@ def save_artical_comment(artical, comment):
     :comment 评论信息，字典列表格式
     """
     with open('./artical_info.txt', 'a', encoding='utf-8') as fi:
-        fi.write(','.join([str(value) for _, value in artical.items()])) 
+        fi.write(
+            ','.join([str(value) for _, value in artical.items()])
+        ) 
+        fi.write('\n')
 
     with open('./artical_comment_info.txt', 'a', encoding='utf-8') as fi:
         for com in comment:
-            info = [str(value) for _, value in com]
+            info = [str(value) for _, value in com.items()]
             info.insert(0, artical['url'])
             fi.write(','.join(info))
+            fi.write('\n')
 
 def parse_artical_info(html):
     """
@@ -42,7 +48,7 @@ def parse_artical_info(html):
     """
     rst = etree.HTML(html)
     # 文章名字
-    name = rst.xpath('//h1[@class="Post-Title"]/text()')
+    name = rst.xpath('//h1[@class="Post-Title"]/text()')[0]
     # 作者名字
     author = rst.xpath(
             '//div[@class="AuthorInfo-content"]/div/span/\
@@ -57,7 +63,7 @@ def parse_artical_info(html):
     likenum = rst.xpath('//span[@class="Voters"]/button/text()')[0]
     
     return {'name': name, 'author': author, 
-            'author_url': author_url, 'likenum': likenum}
+            'author_url': 'http:' + author_url, 'likenum': likenum}
 
 def parse_comment_info(data):
     """
@@ -83,7 +89,7 @@ def parse_comment_info(data):
                 'vote_count': vote_count
         }
         commons.append(info)
-    return commons, common_counts, rst['pagind']['is_end']
+    return commons, common_counts, data['paging']['is_end']
 
 
 def get_artical_info(url):
@@ -92,18 +98,24 @@ def get_artical_info(url):
     """
     return common.get(url)
 
-def get_comment_info(artical_id, offset=0, limit=20):
+def get_comment_info(artical_id, offset=0, limit=20, referer=None):
     """
     获取评论信息
     """
     host = 'https://www.zhihu.com/api/v4/articles/'
-    url = host + artical_id + '/comments?include='\
-            'data%5B*%5D.author%2Ccollapsed%2Creply_to_author\
-            %2Cdisliked%2Ccontent%2Cvoting%2Cvote_count\
-            %2Cis_parent_author%2Cis_author%2Calgorithm_right\
-            &order=normal&limit=' + str(limit) + '&offset='\
-            + str(offset) + '&status=open'
-    return common.get(url, isjson=True)
+    url = (host + artical_id + '/comments?include='
+            'data%5B*%5D.author%2Ccollapsed%2Creply_to_author'
+            '%2Cdisliked%2Ccontent%2Cvoting%2Cvote_count'
+            '%2Cis_parent_author%2Cis_author%2Calgorithm_right'
+            '&order=normal&limit=' + str(limit) + '&offset='
+            + str(offset) + '&status=open')
+    header = None
+    if not referer:
+        header = common.Iheader
+        header['referer'] = referer
+        header['origin'] = 'https://zhuanlan.zhihu.com'
+        
+    return common.get(url, True, header)
 
 def get_artical_info_url():
     """
@@ -116,32 +128,48 @@ def get_artical_info_url():
 def main():
     artical_urls = get_artical_info_url()
     for url in artical_urls:
-        print(url)
-        html = get_artical_info(url)
-        if not html:
-            print('html: ', html)
-            continue
+        try:
+            print('新的文章请求:', url)
+            html = get_artical_info(url)
+            if not html:
+                print('html: ', html)
+                continue
 
-        artical_info = parse_artical_info(html)
-        artical_id = url.split('/')[-1]
-        rst = get_comment_info(artical_id)
-        print('rst: ', rst)
-        comment_info = parse_comment_info(rst)
-        artical_info['common_counts'] = comment_info[1]
-        artical_info['url'] = url
-        comments = list()
-        comments.extends(comment_info[0])
-        if not comment_info[-1]:
-            offset = 0
-            while True:
-                offset = offset + 20
-                info = get_comment_info(artical_id, offset=offset)
-                comments.extends(info[0])
-                # TODO: 处理评论信息
-                if info[-1]:
-                    break
-        save_artical_comment(artical_info, comments)
+            artical_info = parse_artical_info(html)
+            artical_id = url.split('/')[-1]
+            rst = get_comment_info(artical_id, referer=url)
+            # print('rst: ', rst)
+            comment_info = parse_comment_info(rst)
+            artical_info['common_counts'] = comment_info[1]
+            artical_info['url'] = url
+            comments = list()
+            comments.extend(comment_info[0])
+            if not comment_info[-1]:
+                offset = 0
+                while True:
+                    offset = offset + 20
+                    rstjson = get_comment_info(
+                        artical_id, offset=offset, referer=url
+                    )
+                    info = parse_comment_info(rstjson)
+                    comments.extend(info[0])
+                    if info[-1]:
+                        print('完成一个文章的信息抓取...')
+                        break
+            else:
+                print('一次完成一个文章的信息抓取...')
+
+            save_artical_comment(artical_info, comments)
+        except Exception as err:
+            print(str(err))
 
 
 if __name__ == '__main__':
+    starting = time.time()
+    with open('./artical_info.log', 'a', encoding='utf-8') as fi:
+        fi.write('starting: ' + str(starting) + '\n')
     main()
+    ending = time.time()
+    with open('./artical_info.log', 'a', encoding='utf-8') as fi:
+        fi.write('ending: ' + str(ending) + '\n')
+        fi.write('任务耗时: ' + str((ending - starting) / 60) + 'min\n')

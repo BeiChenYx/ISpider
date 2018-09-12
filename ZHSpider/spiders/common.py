@@ -4,24 +4,34 @@
 import requests
 
 # 访问的请求头
-header = {
+Iheader = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
-    'Connection': 'keep-alive',
-    'Host': 'www.zhihu.com',
-    'Upgrade-Insecure-Requests': '1',
+    #'Connection': 'keep-alive',
+    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    #'Host': 'www.zhihu.com',
+    #'Upgrade-Insecure-Requests': '1',
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:61.0) Gecko/20100101 Firefox/61.0'
 }
 
 # 域名
 domain_name = 'https://www.zhihu.com'
 
+# def get(url, isjson=False, headers=None):
+    # """
+    # 封装_get函数，
+    # """
+    # pass
 
-def get(url, isjson=False):
+def get(url, isjson=False, header=None):
     """
     获取url的页面
     """
-    rst = requests.get(url, headers=header)
+    # print('get url: ', url)
+    if header:
+        rst = requests.get(url, headers=header, timeout=15)
+    else:
+        rst = requests.get(url, headers=Iheader, timeout=15)
     print('rst.status_code: ', rst.status_code)
     if rst.status_code == 200:
         if isjson:

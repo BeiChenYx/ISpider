@@ -8,11 +8,13 @@ from lxml import etree
 import common
 
 
-def get_artical_url(url):
+def get_artical_url(url, referer):
     """
     通过翻页的方式获取下一个动态加载的文章url
     """
-    rst = common.get(url, isjson=True)
+    header = common.Iheader
+    header['referer'] = referer
+    rst = common.get(url, isjson=True, header=header)
     if rst == '':
         return None
     # 数据中有两种数据，分别是问答和文章两种，需要分开处理
@@ -107,28 +109,31 @@ def get_second_type(path):
 
 def main():
     lines = get_second_type('./secondType.txt')
-    for line in lines[:1]:
-        html = get_second_info(common.domain_name + line.strip())
-        if not html:
-            continue
-        info_first = parse_first_url(html)
-        save_title_url(info_first[0], info_first[1])
-
-        task_url = [info_first[-1], ]
-        while True:
-            if len(task_url) == 0:
-                break
-            url = task_url.pop()
-            info_paging = get_artical_url(url)
-            if not info_paging:
+    for line in lines:
+        try:
+            html = get_second_info(common.domain_name + line.strip())
+            if not html:
                 continue
-            save_title_url(info_paging[0], info_paging[1])
-            if info_paging[-1]:
-                break
-            task_url.insert(0, info_paging[-2])
-            time.sleep(1)
+            info_first = parse_first_url(html)
+            save_title_url(info_first[0], info_first[1])
 
-        time.sleep(2)
+            task_url = [info_first[-1], ]
+            while True:
+                if len(task_url) == 0:
+                    break
+                url = task_url.pop()
+                info_paging = get_artical_url(url, line)
+                if not info_paging:
+                    continue
+                save_title_url(info_paging[0], info_paging[1])
+                if info_paging[-1]:
+                    break
+                task_url.insert(0, info_paging[-2])
+                time.sleep(1)
+
+            time.sleep(2)
+        except Exception as err:
+            print(str(err))
 
 
 if __name__ == '__main__':
