@@ -90,13 +90,18 @@ def parse_first_url(html):
 
     return artical_list, question_list, next_url
 
-def get_second_info(url):
+def get_second_info(url, referer):
     """
     访问二级类别的详细页面，获取初次加载的文章url以及
     后续文章url的请求地址
     """
     print('get_second_info url is: ', url)
-    html = common.get(url)
+    header = common.Iheader
+    header['referer'] = referer
+    header['Connection'] = 'keep-alive'
+    header['Host'] = 'www.zhihu.com'
+    header['Upgrade-Insecure-Requests'] = '1'
+    html = common.get(url, header=header)
     return html
 
 def get_second_type(path):
@@ -108,10 +113,12 @@ def get_second_type(path):
         return lines
 
 def main():
+    referer = 'https://www.zhihu.com/topics'
     lines = get_second_type('./secondType.txt')
+    lines = [common.domain_name + line.strip() for line in lines]
     for line in lines:
         try:
-            html = get_second_info(common.domain_name + line.strip())
+            html = get_second_info(line, referer)
             if not html:
                 continue
             info_first = parse_first_url(html)
