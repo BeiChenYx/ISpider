@@ -156,10 +156,12 @@ def main():
                     if info[-1]:
                         print('完成一个文章的信息抓取...')
                         break
+                    time.sleep(1)
             else:
                 print('一次完成一个文章的信息抓取...')
 
             save_artical_comment(artical_info, comments)
+            time.sleep(2)
         except Exception as err:
             print(str(err))
 
