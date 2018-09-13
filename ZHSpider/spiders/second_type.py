@@ -12,7 +12,7 @@ def save_result(info):
     """
     保存二级类别
     """
-    with open('secondType.txt', 'a', encoding='utf-8') as fi:
+    with open('./doc/secondType.txt', 'a', encoding='utf-8') as fi:
         for line in info:
             fi.write(line+'/hot\n')
 
@@ -51,7 +51,7 @@ def get_data_id(path):
         yield info['data-id']
 
 def main():
-    topic_ids = get_data_id('./firstType.json')
+    topic_ids = get_data_id('./doc/firstType.json')
     for topic_id in topic_ids:
         offset = 0
         print('topic_id strart: ', topic_id)
@@ -67,10 +67,10 @@ def main():
 
 if __name__ == '__main__':
     starting = time.time()
-    with open('./second_type.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/second_type.log', 'a', encoding='utf-8') as fi:
         fi.write('starting: ' + str(starting) + '\n')
     main()
     ending = time.time()
-    with open('./second_type.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/second_type.log', 'a', encoding='utf-8') as fi:
         fi.write('ending' + str(ending) + '\n')
         fi.write('任务耗时: ' + str((ending - starting) / 60) + 'min\n')

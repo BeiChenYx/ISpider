@@ -26,13 +26,13 @@ def save_question_comment(question, comment):
     """
     保存问答信息和评论信息
     """
-    with open('./question_info.txt', 'a', encoding='utf-8') as fi:
+    with open('./doc/question_info.txt', 'a', encoding='utf-8') as fi:
         fi.write(
             ','.join([str(value) for _, value in question.items()])
         ) 
         fi.write('\n')
 
-    with open('./question_comment_info.txt', 'a', encoding='utf-8') as fi:
+    with open('./doc/question_comment_info.txt', 'a', encoding='utf-8') as fi:
         for com in comment:
             info = [str(value) for _, value in com.items()]
             info.insert(0, question['url'])
@@ -132,7 +132,7 @@ def get_question_info_url():
     """
     获取artical_url.txt文件中的url
     """
-    with open('./question_url.txt', 'r', encoding='utf-8') as fi:
+    with open('./doc/question_url.txt', 'r', encoding='utf-8') as fi:
         for line in fi:
             yield line.strip()
 
@@ -179,10 +179,10 @@ def main():
 
 if __name__ == "__main__":
     starting = time.time()
-    with open('./question_info.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/question_info.log', 'a', encoding='utf-8') as fi:
         fi.write('starting: ' + str(starting) + '\n')
     main()
     ending = time.time()
-    with open('./question_info.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/question_info.log', 'a', encoding='utf-8') as fi:
         fi.write('ending: ' + str(ending) + '\n')
         fi.write('任务耗时: ' + str((ending - starting) / 60) + 'min\n')

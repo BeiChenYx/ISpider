@@ -42,7 +42,7 @@ def post(url, formdata, isjson=False):
     """
     # print('url: ', url)
     # print('formdata: ', formdata)
-    rst = requests.post(url, data=formdata,headers=header)
+    rst = requests.post(url, data=formdata,headers=Iheader)
     print('rst.status_code: ', rst.status_code)
     if rst.status_code == 200:
         if isjson:

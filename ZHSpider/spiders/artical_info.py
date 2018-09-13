@@ -28,13 +28,13 @@ def save_artical_comment(artical, comment):
     :artical 文章信息，字典格式
     :comment 评论信息，字典列表格式
     """
-    with open('./artical_info.txt', 'a', encoding='utf-8') as fi:
+    with open('./doc/artical_info.txt', 'a', encoding='utf-8') as fi:
         fi.write(
             ','.join([str(value) for _, value in artical.items()])
         ) 
         fi.write('\n')
 
-    with open('./artical_comment_info.txt', 'a', encoding='utf-8') as fi:
+    with open('./doc/artical_comment_info.txt', 'a', encoding='utf-8') as fi:
         for com in comment:
             info = [str(value) for _, value in com.items()]
             info.insert(0, artical['url'])
@@ -121,7 +121,7 @@ def get_artical_info_url():
     """
     获取artical_url.txt文件中的url
     """
-    with open('./artical_url.txt', 'r', encoding='utf-8') as fi:
+    with open('./doc/artical_url.txt', 'r', encoding='utf-8') as fi:
         for line in fi:
             yield line.strip()
 
@@ -168,10 +168,10 @@ def main():
 
 if __name__ == '__main__':
     starting = time.time()
-    with open('./artical_info.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/artical_info.log', 'a', encoding='utf-8') as fi:
         fi.write('starting: ' + str(starting) + '\n')
     main()
     ending = time.time()
-    with open('./artical_info.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/artical_info.log', 'a', encoding='utf-8') as fi:
         fi.write('ending: ' + str(ending) + '\n')
         fi.write('任务耗时: ' + str((ending - starting) / 60) + 'min\n')

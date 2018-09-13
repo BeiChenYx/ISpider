@@ -16,7 +16,7 @@ def save_result(data):
     info = {
         'info': data,
     }
-    with open('./firstType.json', 'w', encoding='utf-8') as fi:
+    with open('./doc/firstType.json', 'w', encoding='utf-8') as fi:
         json.dump(info, fi, ensure_ascii=False, indent=4)
 
 def parse_page(html):

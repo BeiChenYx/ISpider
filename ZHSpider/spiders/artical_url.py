@@ -1,5 +1,5 @@
 """
-获取文章url地址
+获取secondType.txt中的二级类别下面的文章或问答的url地址
 """
 import re
 import time
@@ -7,6 +7,19 @@ from lxml import etree
 
 import common
 
+
+def save_title_url(artical, question):
+    """
+    保存文章详细信息的地址
+    """
+    with open('./doc/artical_url.txt', 'a', encoding='utf-8') as fi:
+        for line in artical:
+            print(line)
+            fi.write(line + '\n')
+    with open('./doc/question_url.txt', 'a', encoding='utf-8') as fi:
+        for line in question:
+            print(line)
+            fi.write(line + '\n')
 
 def get_artical_url(url, referer):
     """
@@ -39,19 +52,6 @@ def get_artical_url(url, referer):
     next_url = rst['paging']['next']
     is_end = rst['paging']['is_end']
     return artical_list, question_list, next_url, is_end
-
-def save_title_url(artical, question):
-    """
-    保存文章详细信息的地址
-    """
-    with open('artical_url.txt', 'a', encoding='utf-8') as fi:
-        for line in artical:
-            print(line)
-            fi.write(line + '\n')
-    with open('question_url.txt', 'a', encoding='utf-8') as fi:
-        for line in question:
-            print(line)
-            fi.write(line + '\n')
 
 def parse_first_url(html):
     """
@@ -114,7 +114,7 @@ def get_second_type(path):
 
 def main():
     referer = 'https://www.zhihu.com/topics'
-    lines = get_second_type('./secondType.txt')
+    lines = get_second_type('./doc/secondType.txt')
     lines = [common.domain_name + line.strip() for line in lines]
     for line in lines:
         try:
@@ -145,10 +145,10 @@ def main():
 
 if __name__ == '__main__':
     starting = time.time()
-    with open('./artical_url.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/artical_url.log', 'a', encoding='utf-8') as fi:
         fi.write('starting: ' + str(starting) + '\n')
     main()
     ending = time.time()
-    with open('./artical_url.log', 'a', encoding='utf-8') as fi:
+    with open('./doc/artical_url.log', 'a', encoding='utf-8') as fi:
         fi.write('ending: ' + str(ending) + '\n')
         fi.write('任务耗时: ' + str((ending - starting) / 60) + 'min\n')
