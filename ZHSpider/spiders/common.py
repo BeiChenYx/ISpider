@@ -17,12 +17,6 @@ Iheader = {
 # 域名
 domain_name = 'https://www.zhihu.com'
 
-# def get(url, isjson=False, headers=None):
-    # """
-    # 封装_get函数，
-    # """
-    # pass
-
 def get(url, isjson=False, header=None):
     """
     获取url的页面
