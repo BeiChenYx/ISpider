@@ -9,7 +9,7 @@ class RedisHandler(object):
     处理Redis操作的类
     连接，断开，写入，读取的封装
     """
-    def __init__(self, host='localhost', port='6379', password=''):
+    def __init__(self, host='120.79.7.88', port='6378', password=''):
         """
         队列定义:
             1. 一级类别结果存储队列：
@@ -50,48 +50,48 @@ class RedisHandler(object):
         :data  需要写入的数据
         :queue_name 需要写入的队列名称
         """
-        self.lpush(self, queue_name, data)
+        self.iredis.lpush(queue_name, data)
 
     def _get_queue(self, queue_name):
         """
         从指定的Redis队列中读取数据
         :queue_name 需要读取的队列名字
         """
-        return self.rpop(queue_name)
+        return self.iredis.rpop(queue_name)
 
     def push_onetopic(self, data):
         self._set_queue(data, self.onetopic)
 
-    def get_onetopic(self)
+    def get_onetopic(self):
         return self._get_queue(self.onetopic)
 
     def push_twotopic(self, data):
         self._set_queue(data, self.twotopic)
 
-    def get_twotopic(self)
+    def get_twotopic(self):
         return self._get_queue(self.twotopic)
 
     def push_articalurl(self, data):
         self._set_queue(data, self.articalurl)
 
-    def get_articalurl(self)
+    def get_articalurl(self):
         return self._get_queue(self.articalurl)
 
     def push_articalinfo(self, data):
         self._set_queue(data, self.articalinfo)
 
-    def get_articalinfo(self)
+    def get_articalinfo(self):
         return self._get_queue(self.articalinfo)
 
     def push_questionurl(self, data):
         self._set_queue(data, self.questionurl)
 
-    def get_questionurl(self)
+    def get_questionurl(self):
         return self._get_queue(self.questionurl)
 
     def push_questioninfo(self, data):
         self._set_queue(data, self.questioninfo)
 
-    def get_questioninfo(self)
+    def get_questioninfo(self):
         return self._get_queue(self.questioninfo)
 
