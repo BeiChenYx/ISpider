@@ -6,15 +6,6 @@ from first import First
 
 
 def main():
-    # 创建Redis对象，并连接Redis
-    # iredis = RedisHandler(host='120.79.7.88', port=6378)
-
-    # 执行第一个类别请求
-    # first_result = first.main()
-    # print(first_result)
-    # for value in first_result:
-        # iredis.push_onetopic(value)
-        # print(value)
     first = First()
     first.main()
 

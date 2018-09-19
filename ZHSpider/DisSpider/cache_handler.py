@@ -1,6 +1,21 @@
 """
 Redis缓存操作
+    队列定义:
+        1. 一级类别结果存储队列：
+            zh:onetopic
+        2. 二级类别结果存储队列:
+            zh:twotopic
+        3. 文章详情页面url地址队列:
+            zh:articalurl
+        4. 问答详情页面url地址队列:
+            zh:questionurl
+        5. 文章详情数据存储:
+            zh:articalinfo
+        6. 问答详情数据存储:
+            zh:questioninfo
 """
+import configparser
+
 import redis
 
 
@@ -9,36 +24,39 @@ class RedisHandler(object):
     处理Redis操作的类
     连接，断开，写入，读取的封装
     """
-    def __init__(self, host='120.79.7.88', port='6378', password=''):
-        """
-        队列定义:
-            1. 一级类别结果存储队列：
-                zh:onetopic
-            2. 二级类别结果存储队列:
-                zh:twotopic
-            3. 文章详情页面url地址队列:
-                zh:articalurl
-            4. 问答详情页面url地址队列:
-                zh:questionurl
-            5. 文章详情数据存储:
-                zh:articalinfo
-            6. 问答详情数据存储:
-                zh:questioninfo
-
-        """
-        self._host = host
-        self._port = port
-        self._password = password
+    def __init__(self):
+        self._host, self._port = self.read_config()
+        assert self._host!='' and self._port!='', \
+                '配置文件读取出错'
         self.iredis = redis.Redis(host=self._host, 
                                   port=self._port, 
                                   decode_responses=True)
 
-        self.onetopic = 'zh:onetopic'
-        self.twotopic = 'zh:twotopic'
-        self.articalurl = 'zh:articalurl'
-        self.questionurl = 'zh:questionurl'
-        self.articalinfo = 'zh:articalinfo'
-        self.questioninfo = 'zh:questioninfo'
+        self.onetopic = self.read_task('one_topic')
+        self.twotopic = self.read_task('two_topic')
+        self.articalurl = self.read_task('artical_url')
+        self.questionurl = self.read_task('question_url')
+        self.articalinfo = self.read_task('artical_info')
+        self.questioninfo = self.read_task('question_info')
+
+    def read_config(self):
+        """
+        读取配置文件
+        """
+        self.conf = configparser.ConfigParser()
+        self.conf.read('./config/config.ini')
+        port = self.conf.get('redis', 'port')
+        host = self.conf.get('redis', 'host')
+        print('read host:port: %s:%s' % (host, port))
+        return host, port
+    
+    def read_task(self, name):
+        """
+        读取指定队列的值，用于Redis
+        """
+        self.conf = configparser.ConfigParser()
+        self.conf.read('./config/config.ini')
+        return self.conf.get('task', name)
     
     # def __del__(self):
         # redis对象在离开作用域会自动析构

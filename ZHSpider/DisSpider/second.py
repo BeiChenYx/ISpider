@@ -1,17 +1,82 @@
 """
 从缓存中获取一级类别，然后访问，获取二级类别
 """
+import time
+
 from lxml import etree
 
 from common import get
+from cache_handler import RedisHandler
 
 
-
-def main():
+class Second(RedisHandler):
     """
-    访问一级类别，获取到二级类别
+    从一级类别中获取二级类别
     """
-    pass
+    def __init__(self):
+        RedisHandler.__init(self)
+
+    def read_task(self)
+        """
+        获取一级类别
+        """
+        while True:
+            data_id = self.get_onetopic()
+            if data_id == None:
+                break
+            yield data_id
+
+    def get_second(self, data_id, offset):
+        """
+        获取二级类别的地址
+        """
+        url = 'https://www.zhihu.com/node/TopicsPlazzaListV2'
+        params = '{"topic_id": %d,"offset": %d,"hash_id": ""}'
+        postData = {
+                'method': 'next',
+                'params': params % (int(data_id), int(offset))
+        }
+        rst = common.post(url, isjson=True, formdata=postData)
+        if rst:
+            return rst['msg']
+        else:
+            return ''
+
+    def parse_result(self, data):
+        """
+        提取二级类别的地址
+        """
+        urls = list()
+        for msg in data:
+            url = re.findall(
+                    '<a target="_blank" href="(.*?)">',
+                    msg
+            )
+            urls.append(url[0])
+        return urls
+
+    def save_result(self, data):
+        """
+        保存结果到Redis中去
+        """
+        for val in data:
+            print('second val: ', val)
+            self.push_twotopic(val)
+
+    def main(self):
+        topic_ids = self.read_task()
+        for topic_id in topic_ids:
+            offset = 0
+            print('topic_id strart: ', topic_id)
+            while True:
+                msg = get_second(topic_id, offset)
+                if not len(msg):
+                    break
+                offset += 20
+                urls = parse_result(msg)
+                save_result(urls)
+                time.sleep(3)
+        
 
 if __name__ == '__main__':
-    print(main())
+    main()

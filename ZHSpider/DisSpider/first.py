@@ -18,7 +18,10 @@ class First(RedisHandler):
         """
         保存结果到Redis中去
         """
-        [self.push_onetopic(val) for val in data]
+        # [self.push_onetopic(val) for val in data]
+        for val in data:
+            print('val: ', val)
+            self.push_onetopic(val)
 
     def parse_page(self, html):
         """
