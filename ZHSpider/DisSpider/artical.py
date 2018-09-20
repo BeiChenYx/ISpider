@@ -3,6 +3,7 @@
 将信息保存到redis中去
 """
 import time
+import json
 
 from lxml import etree
 
@@ -107,11 +108,12 @@ class Artical(RedisHandler):
                 'likenum': likenum}
 
     def save_result(self, artical, comment):
-        for val in artical:
-            self.push_articalinfo(str(val))
+        self.push_articalinfo(json.dumps(artical))
+        print('artical: ', json.dumps(artical))
 
         for val in comment:
-            # self.push_articalin
+            self.push_articalcomment(json.dumps(val))
+            print('comment: ', json.dumps(val))
 
     def main(self):
         urls = self.read_artical_url()

@@ -66,7 +66,7 @@ def parse_artical_info(html):
             'author_url': 'http:' + author_url, 'likenum': likenum}
 
 def parse_comment_info(data):
-    """
+    ""
     提取评论信息
     """
     # 评论总数
