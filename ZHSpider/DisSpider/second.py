@@ -2,10 +2,11 @@
 从缓存中获取一级类别，然后访问，获取二级类别
 """
 import time
+import re
 
 from lxml import etree
 
-from common import get
+import common
 from cache_handler import RedisHandler
 
 
@@ -14,9 +15,9 @@ class Second(RedisHandler):
     从一级类别中获取二级类别
     """
     def __init__(self):
-        RedisHandler.__init(self)
+        RedisHandler.__init__(self)
 
-    def read_task(self)
+    def read_data_id(self):
         """
         获取一级类别
         """
@@ -64,19 +65,20 @@ class Second(RedisHandler):
             self.push_twotopic(val)
 
     def main(self):
-        topic_ids = self.read_task()
+        topic_ids = self.read_data_id()
         for topic_id in topic_ids:
             offset = 0
             print('topic_id strart: ', topic_id)
             while True:
-                msg = get_second(topic_id, offset)
+                msg = self.get_second(topic_id, offset)
                 if not len(msg):
                     break
                 offset += 20
-                urls = parse_result(msg)
-                save_result(urls)
+                urls = self.parse_result(msg)
+                self.save_result(urls)
                 time.sleep(3)
         
 
 if __name__ == '__main__':
-    main()
+    second = Second()
+    second.main()

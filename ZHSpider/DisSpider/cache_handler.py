@@ -25,11 +25,11 @@ class RedisHandler(object):
     连接，断开，写入，读取的封装
     """
     def __init__(self):
-        self._host, self._port = self.read_config()
-        assert self._host!='' and self._port!='', \
+        host, port = self.read_config()
+        assert host!='' and port!='', \
                 '配置文件读取出错'
-        self.iredis = redis.Redis(host=self._host, 
-                                  port=self._port, 
+        self.iredis = redis.Redis(host=str(host),
+                                  port=int(port), 
                                   decode_responses=True)
 
         self.onetopic = self.read_task('one_topic')
@@ -37,7 +37,9 @@ class RedisHandler(object):
         self.articalurl = self.read_task('artical_url')
         self.questionurl = self.read_task('question_url')
         self.articalinfo = self.read_task('artical_info')
+        self.articalcomment = self.read_task('artical_comment')
         self.questioninfo = self.read_task('question_info')
+        self.questioncomment = self.read_task('question_comment')
 
     def read_config(self):
         """
@@ -101,6 +103,12 @@ class RedisHandler(object):
     def get_articalinfo(self):
         return self._get_queue(self.articalinfo)
 
+    def push_articalcomment(self, data):
+        self._set_queue(data, self.articalcomment)
+
+    def get_articalcomment(self):
+        return self._get_queue(self.articalcomment)
+
     def push_questionurl(self, data):
         self._set_queue(data, self.questionurl)
 
@@ -112,4 +120,11 @@ class RedisHandler(object):
 
     def get_questioninfo(self):
         return self._get_queue(self.questioninfo)
+
+    def push_questioncomment(self, data):
+        self._set_queue(data, self.questioncomment)
+
+    def get_questioncomment(self):
+        return self._get_queue(self.questioncomment)
+
 
