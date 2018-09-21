@@ -107,52 +107,58 @@ class Artical(RedisHandler):
                 'author_url': 'http:' + author_url,
                 'likenum': likenum}
 
-    def save_result(self, artical, comment):
-        self.push_articalinfo(json.dumps(artical))
-        print('artical: ', json.dumps(artical))
+    def save_result(self, artical=None, comment=None):
+        if artical:
+            self.push_articalinfo(json.dumps(artical))
+            print('artical: ', json.dumps(artical))
 
-        for val in comment:
-            self.push_articalcomment(json.dumps(val))
-            print('comment: ', json.dumps(val))
+        if comment:
+            for val in comment:
+                self.push_articalcomment(json.dumps(val))
+                print('comment: ', json.dumps(val))
 
     def main(self):
         urls = self.read_artical_url()
         for url in urls:
-            # try:
-            html = self.get_artical_info(url)
-            if not html:
-                print('artical info: ', html)
-                continue
-            artical_info = self.parse_artical_info(html)
-            artical_id = url.split('/')[-1]
-            rst = self.get_comment_info(
-                    artical_id, referer=url
-            )
-            comment_info = self.parse_comment_info(rst)
-            artical_info['common_counts'] = comment_info[1]
-            artical_info['url'] = url
-            comments = list()
-            comments.extend(comment_info[0])
-            if not comment_info[-1]:
-                offset = 0
-                while True:
-                    offset = offset + 20
-                    rstjson = self.get_comment_info(
-                        artical_id, offset=offset, referer=url
-                    )
-                    info = self.parse_comment_info(rstjson)
-                    comments.extend(info[0])
-                    if info[-1]:
-                        print('完成一个文章的信息抓取...')
-                        break
-                    time.sleep(1)
-            else:
-                print('一次完成一个文章的信息抓取...')
+            try:
+                html = self.get_artical_info(url)
+                if not html:
+                    print('artical info: ', html)
+                    continue
+                artical_info = self.parse_artical_info(html)
+                artical_id = url.split('/')[-1]
+                rst = self.get_comment_info(
+                        artical_id, referer=url
+                )
+                comment_info = self.parse_comment_info(rst)
+                artical_info['common_counts'] = comment_info[1]
+                artical_info['url'] = url
+                self.save_result(articles=artical_info)
+                if not comment_info[-1]:
+                    offset = 0
+                    count = 0
+                    while True:
+                        offset = offset + 20
+                        rstjson = self.get_comment_info(
+                            artical_id, offset=offset, referer=url
+                        )
+                        info = self.parse_comment_info(rstjson)
+                        if info[-1]:
+                            print('完成一个文章的信息抓取...')
+                            break
+                        count += 1
+                        print('%s 完成了%d次评论请求' % (
+                              artical_id, count)
+                        )
+                        self.save_result(comment=info[0])
+                        time.sleep(1)
+                else:
+                    print('一次完成一个文章的信息抓取...')
 
-            self.save_result(artical_info, comments)
-            time.sleep(2)
-            # except Exception as err:
-                # print(str(err))
+                self.save_result(artical_info, comments)
+                time.sleep(2)
+            except Exception as err:
+                print(str(err))
 
 
 if __name__ == "__main__":

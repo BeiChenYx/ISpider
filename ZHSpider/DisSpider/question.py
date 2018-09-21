@@ -40,21 +40,21 @@ class Question(RedisHandler):
         """
         获取评论信息
         """
-        url = ('https://www.zhihu.com/api/v4/questions/' + question_id +
-               '/answers?include=data%5B%2A%5D.is_normal%2'
-               'Cadmin_closed_comment%2Creward_info%2Cis_collapsed%2'
-               'Cannotation_action%2Cannotation_detail%2'
-               'Ccollapse_reason%2Cis_sticky%2Ccollapsed_by%2'
-               'Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2'
-               'Ceditable_content%2Cvoteup_count%2Creshipment_settings%2'
-               'Ccomment_permission%2Ccreated_time%2Cupdated_time%2'
-               'Creview_info%2Crelevant_info%2Cquestion%2Cexcerpt%2'
-               'Crelationship.is_authorized%2Cis_author%2Cvoting%2'
-               'Cis_thanked%2Cis_nothelp%3Bdata%5B%2A%5D.mark_infos'
-               '%5B%2A%5D.url%3Bdata%5B%2A%5D.author.follower_count%2'
-               'Cbadge%5B%3F%28type%3Dbest_answerer%29%5D.topics&limit='
-               + str(limit) + '&offset=' + str(offset)
-               + '&sort_by=default')
+        # print('question_id: ', question_id)
+        url = ('https://www.zhihu.com/api/v4/questions/%s/answers?'
+            'include=data[*].is_normal,admin_closed_comment,'
+            'reward_info,is_collapsed,annotation_action,annotation'
+            '_detail,collapse_reason,is_sticky,collapsed_by,'
+            'suggest_edit,comment_count,can_comment,content,'
+            'editable_content,voteup_count,reshipment_settings,'
+            'comment_permission,created_time,updated_time,review_'
+            'info,relevant_info,question,excerpt,relationship.'
+            'is_authorized,is_author,voting,is_thanked,is_nothelp;'
+            'data[*].mark_infos[*].url;data[*].author.follower_'
+            'count,badge[*].topics&offset=%s&limit=%s&sort_by='
+            'default') % (
+               str(question_id), str(limit), str(offset)
+           )
         header = None
         if not referer:
             header = common.Iheader
@@ -119,8 +119,15 @@ class Question(RedisHandler):
             comments.append(info)
         return comments, data['paging']['is_end']
 
-    def save_result(self, question, comment):
-        pass
+    def save_result(self, question=None, comment=None):
+        if question:
+            self.push_questioninfo(json.dumps(question)) 
+            print('question: ', json.dumps(question))
+
+        if comment:
+            for val in comment:
+                self.push_questioncomment(json.dumps(val))
+                print('q_comment: ', json.dumps(val))
 
     def main(self):
         question_urls = self.read_question_url()
@@ -133,6 +140,7 @@ class Question(RedisHandler):
                     continue
                 question_info = self.parse_question_info(html)
                 question_info['url'] = url
+                self.save_result(question=question_info)
                 question_id = url.split('/')[-3]
                 rst = self.get_comment_info(
                         question_id, referer=url
@@ -141,25 +149,30 @@ class Question(RedisHandler):
                     print('rst: ', rst)
                     continue
                 comment_info = self.parse_comment_info(rst)
-                comments = list()
-                comments.extend(comment_info[0])
+                # comments = list()
+                # comments.extend(comment_info[0])
                 if not comment_info[-1]:
                     offset = 0
+                    count = 0
                     while True:
                         offset = offset + 5
                         rstjson = self.get_comment_info(
                             question_id, offset=offset, referer=url
                         )
                         info = self.parse_comment_info(rstjson)
-                        comments.extend(info[0])
+                        # comments.extend(info[0])
                         if info[-1]:
                             print('完成一个文章的信息抓取...')
                             break
+                        count += 1
+                        print('%s 完成了%d次评论请求' % (
+                              question_id, count)
+                        )
+                        self.save_result(comment=info[0])
                         time.sleep(1)
                 else:
                     print('一次完成一个文章的信息抓取...')
 
-                self.save_result(question_info, comments)
                 time.sleep(2)
             except Exception as err:
                 print(str(err))

@@ -26,7 +26,7 @@ def get(url, isjson=False, header=None):
         rst = requests.get(url, headers=header, timeout=15)
     else:
         rst = requests.get(url, headers=Iheader, timeout=15)
-    print('rst.status_code: ', rst.status_code)
+    # print('rst.status_code: ', rst.status_code)
     if rst.status_code == 200:
         if isjson:
             return rst.json()
