@@ -1,5 +1,8 @@
 # ZHSpider
 
+spiders目录为单个任务的方式，使用文件来保存结果；
+DisSpider目录是在spiders目录基础上改用Redis进行分布式开发;
+
 ## 问题描述
 
 基础要求：把知乎的所有话题、各话题内的文章、问答爬下来（至少爬10万条数据，不设上限），把数据存储到数据库中，手段不限（可以使用Scrapy也可以使用Urllib,具体技术不做限制）。
@@ -72,3 +75,4 @@ https://www.zhihu.com/api/v4/topics/19555513/feeds/top_activity
 访问文章详细页面地址会响应文章数据以及前面几个答案数据，继续点击更多答案则通过json加载新的数据
 
 https://www.zhihu.com/api/v4/questions/21499964/answers
+
