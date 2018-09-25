@@ -25,8 +25,8 @@ class Artical(RedisHandler):
         while True:
             url = self.get_articalurl()
             if url == None:
-                print('url: ', url)
-                break
+                time.sleep(3)
+                continue
             yield url
 
     def get_artical_info(self, url):
@@ -133,7 +133,7 @@ class Artical(RedisHandler):
                 comment_info = self.parse_comment_info(rst)
                 artical_info['common_counts'] = comment_info[1]
                 artical_info['url'] = url
-                self.save_result(articles=artical_info)
+                self.save_result(artical=artical_info)
                 if not comment_info[-1]:
                     offset = 0
                     count = 0
@@ -155,10 +155,9 @@ class Artical(RedisHandler):
                 else:
                     print('一次完成一个文章的信息抓取...')
 
-                self.save_result(artical_info, comments)
                 time.sleep(2)
             except Exception as err:
-                print(str(err))
+                print(str(err) + ': error in ' + str(__file__))
 
 
 if __name__ == "__main__":

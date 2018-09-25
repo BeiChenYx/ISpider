@@ -1,6 +1,5 @@
 """
-主要功能模块，负责启动项目访问知乎一级类别
-并将数据存储到Redis缓存中去
+slave
 """
 from multiprocessing import Process
 
@@ -12,12 +11,12 @@ from question import Question
 
 
 def main():
-    first = First()
+    # first = First()
     second = Second()
     title_filter = TitleFilter()
     artical = Artical()
     question = Question()
-    objects = [first, second, title_filter, artical, question]
+    objects = [second, title_filter, artical, question]
 
     tasks = list()
     for obj in objects:

@@ -24,7 +24,8 @@ class Second(RedisHandler):
         while True:
             data_id = self.get_onetopic()
             if data_id == None:
-                break
+                time.sleep(3)
+                continue
             yield data_id
 
     def get_second(self, data_id, offset):
@@ -67,16 +68,19 @@ class Second(RedisHandler):
     def main(self):
         topic_ids = self.read_data_id()
         for topic_id in topic_ids:
-            offset = 0
-            print('topic_id strart: ', topic_id)
-            while True:
-                msg = self.get_second(topic_id, offset)
-                if not len(msg):
-                    break
-                offset += 20
-                urls = self.parse_result(msg)
-                self.save_result(urls)
-                time.sleep(3)
+            try:
+                offset = 0
+                print('topic_id strart: ', topic_id)
+                while True:
+                    msg = self.get_second(topic_id, offset)
+                    if not len(msg):
+                        break
+                    offset += 20
+                    urls = self.parse_result(msg)
+                    self.save_result(urls)
+                    time.sleep(3)
+            except Exception as err:
+                print(str(err) + ': error in ' + str(__file__))
         
 
 if __name__ == '__main__':

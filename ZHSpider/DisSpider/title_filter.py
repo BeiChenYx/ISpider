@@ -26,7 +26,8 @@ class TitleFilter(RedisHandler):
         while True:
             line = self.get_twotopic()
             if line == None:
-                break
+                time.sleep(3)
+                continue
             yield common.domain_name + line + '/hot'
 
     def get_second_info(self, url):
@@ -161,7 +162,7 @@ class TitleFilter(RedisHandler):
 
                 time.sleep(1)
             except Exception as err:
-                print(str(err))
+                print(str(err) + ': error in ' + str(__file__))
 
 
 if __name__ == "__main__":

@@ -25,8 +25,8 @@ class Question(RedisHandler):
         while True:
             url = self.get_questionurl()
             if url == None:
-                print('url: ', url)
-                break
+                time.sleep(3)
+                continue
             yield url
 
     def get_question_info(self, url):
@@ -175,7 +175,7 @@ class Question(RedisHandler):
 
                 time.sleep(2)
             except Exception as err:
-                print(str(err))
+                print(str(err) + ': error in ' + str(__file__))
 
 if __name__ == "__main__":
     question = Question()
